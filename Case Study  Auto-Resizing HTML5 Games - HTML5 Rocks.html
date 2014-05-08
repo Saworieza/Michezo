@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<!-- saved from url=(0092)http://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/ -->
+<html lang="en" dir="ltr" itemscope="" itemtype="http://schema.org/Article" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths adownload webaudio blobconstructor no-battery contenteditable cors csscalc mediaqueries no-regions cssfilters classlist details datalistelem track filesystem filereader fullscreen no-gamepads getusermedia xhr2 performance raf quotamanagement no-stylescoped no-webintents websocketsbinary todataurljpeg todataurlwebp webp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta property="twitter:account_id" content="1593210261">
+  <!-- Copyright (c) 2012 Google Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   *     http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *
+   * Author: Derek Detweiler - derek.detweiler@gopherwoodstudios.com
+   *
+   * 
+   *
+  -->
+  <title>Case Study: Auto-Resizing HTML5 Games - HTML5 Rocks</title>
+  <meta name="description" content="Resizing your game to fit a variety of form factors and window sizes.">
+  <meta name="keywords" content="html5,html 5,html5 demos,html5 examples,javascript,css3,notifications,geolocation,web workers,apppcache,file api,filereader,indexeddb,offline,audio,video,drag and drop,chrome,sse,mobile">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <link rel="shortcut icon" href="http://www.html5rocks.com/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="HTML5 Rocks RSS" href="http://feeds.feedburner.com/html5rocks">
+
+  <meta itemprop="name" content="Case Study: Auto-Resizing HTML5 Games - HTML5 Rocks">
+  <meta itemprop="description" content="Resizing your game to fit a variety of form factors and window sizes.">
+  
+  <meta itemprop="image" content="http://www.html5rocks.com/static/images/html5rocks-logo-wings.png">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ChromiumDev">
+  <meta name="twitter:creator" content="@gopherwood">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Case Study: Auto-Resizing HTML5 Games - HTML5 Rocks">
+  <meta property="og:url" content="http://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/">
+  <meta property="og:description" content="Resizing your game to fit a variety of form factors and window sizes.">
+  <meta property="og:image" content="http://www.html5rocks.com/static/images/profiles/derekdetweiler.png">
+  <meta property="og:site_name" content="HTML5 Rocks - A resource for open web HTML5 developers">
+  
+
+  
+  <link rel="author" href="https://www.google.com/profiles/106759696088618829172">
+  
+  
+  <link rel="publisher" href="https://plus.google.com/+GoogleChromeDevelopers">
+
+  
+
+  
+    
+    <link rel="stylesheet" media="all" href="http://www.html5rocks.com/static/css/v2-combined.min.css?20131111">
+    
+
+    
+  
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,800|Source+Code+Pro" rel="stylesheet">
+
+  <link rel="apple-touch-icon" href="http://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png">
+  <link rel="apple-touch-icon-precomposed" href="http://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png">
+
+  <script type="text/javascript" src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/count.js" async=""></script><script type="text/javascript" async="" src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/ga.js"></script><script src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/modernizr.custom.82437.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+  <![endif]-->
+
+  
+<script async="" src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/count-data.js"></script></head>
+<body data-href="tutorials-casestudies-gopherwoord-studios-resizing-html5-games" onload="" class="article tutorial">
+
+  <header class="main" id="siteheader">
+    <h1 id="title">
+      <a href="http://www.html5rocks.com/en/" title="HTML5 Rocks">HTML5 Rocks</a>
+    </h1>
+    <a href="http://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/#sitenav" id="navtoggle">Show navigation</a>
+
+    
+    <a id="toctoggle" href="http://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/#toc">Table of Contents</a>
+    
+
+    <nav id="sitenav">
+      <ul>
+        
+        <li id="home_menu"><a href="http://www.html5rocks.com/en/" class="home">Home</a></li>
+        
+        <li id="tutorials_menu"><a href="http://www.html5rocks.com/en/tutorials/?page=1" class="tutorials">Tutorials</a></li>
+        <li id="updates_menu"><a href="http://www.html5rocks.com/en/updates/" class="updates">Updates</a></li>
+        <li id="contrib_menu"><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md" target="_blank">Contribute</a></li>
+        <li id="slides_menu"><a href="http://www.html5rocks.com/en/slides" class="slides">Slides</a></li>
+        <li id="resources_menu"><a href="http://www.html5rocks.com/en/resources" class="resources">Resources</a></li>
+      </ul>
+    </nav>
+
+    
+    <nav class="toc" id="toc">
+      <h1>Table of Contents</h1>
+
+      
+
+      <h1 class="visible-title">Localizations:</h1>
+      <ul>
+        
+          <li><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md">Contribute one</a></li>
+        
+      </ul>
+    </nav>
+    
+  </header>
+
+  <div class="body-content">
+    
+
+  <section class="title">
+
+    
+
+    <section class="title-text container">
+      
+      <h1>Case Study: Auto-Resizing HTML5 Games</h1>
+      
+      
+
+      <a href="http://www.html5rocks.com/en/" class="watermark">HTML5 Rocks</a>
+    </section>
+  </section>
+
+  <article class="content-wrapper">
+
+    <section class="container">
+
+      
+
+      <div class="article-meta" id="article-meta" style="top: auto;">
+        <nav class="toc">
+          <h1>Table of Contents</h1>
+
+          
+        </nav>
+
+        <aside class="localizations">
+          <h1>Localizations</h1>
+          <ul>
+            
+              <li><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md">Contribute one</a></li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+
+      <div class="content" id="article-content">
+
+        <section class="byline">
+
+          <div class="byline-content">
+            
+            <section class="author-images">
+              <a href="http://www.html5rocks.com/profiles/#derekdetweiler">
+                <img src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/derekdetweiler.png" itemprop="photo" alt="Derek Detweiler" title="Derek Detweiler">
+              </a>
+
+              
+            </section>
+
+            <section class="meta">
+              <div class="authors">
+                <strong>By</strong> <a href="http://www.html5rocks.com/profiles/#derekdetweiler">Derek Detweiler</a>
+                
+              </div>
+
+              
+
+              <div class="date">
+                <time pubdate=""><strong>Published:</strong> July 3rd, 2011</time>
+                
+                <span><strong>Comments:</strong> <a href="http://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/#disqus_thread" class="load-comments" data-disqus-identifier="http://www.html5rocks.com/tutorials/casestudies/gopherwoord-studios-resizing-html5-games.html">44</a></span>
+              </div>
+
+              <div id="notcompatible" class="hidden">
+                Your browser may not support the functionality in this article.
+              </div>
+            </section>
+            <div class="clear"></div>
+
+            
+          </div>
+        </section>
+
+        
+<h2>
+Introduction
+</h2>
+
+<p>
+In the summer of 2010, we created Sand Trap, a game that we entered in a competition on HTML5 games for mobile phones. But most mobile phones either displayed only part of the game or made the game too small—making it completely unplayable. So we took it upon ourselves to make the game fluidly adjust to match any resolution. After a bit of re-programming and using ideas outlined in this article, we had a game that scaled across any modern browser, whether it ran in a desktop or a mobile device.
+</p>
+
+<p>
+  <img src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/image04.png" alt="screenshot of thwack fullscreen" width="288" height="216">
+  <img src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/image01.png" alt="screenshot of thwack smaller in browser window" width="288" height="185">
+</p>
+
+<p>
+This approach worked well for Sand Trap, so we used the same method on our latest game, Thwack!!. The game automatically adjusts screen resolutions to fit both full-screen and custom-sized windows, as shown in the screenshots below.
+</p>
+
+<p>
+Implementing this required taking advantage of both CSS and JavaScript. Using CSS to fill the whole screen is trivial, but CSS does not allow you to maintain the same width-to-height ratio to prevent stretching of the canvas and game area. That's where JavaScript comes in. You can rescale document elements with JavaScript and trigger the resize on window events.
+</p>
+
+<h2>
+Preparing the Page
+</h2>
+
+<p>
+The first step is to designate the area on the page where the game will take place. If you include this as a div block, you can place other tags or a canvas element within it. By setting it up correctly, these child elements will inherit the scaling of the parent div block.
+</p>
+
+<p>
+If you have two parts to your game area, a play area and a score-keeping area, it might look like this:
+</p>
+
+<pre class="prettyprint"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">”gameArea”</span><span class="tag">&gt;</span><span class="pln">
+  </span><span class="tag">&lt;canvas</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">”gameCanvas”</span><span class="tag">&gt;&lt;/canvas&gt;</span><span class="pln">
+  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">”statsPanel”</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span></pre>
+
+<p>
+Once you have a basic document structure, you can give these elements a few CSS properties to prepare them for resizing. Many of the CSS properties for “gameArea” are manipulated directly by JavaScript, but in order for them to work, set up a few other CSS properties starting with the parent gameArea div block:
+</p>
+
+<pre class="prettyprint"><span class="com">#gameArea {</span><span class="pln">
+  position</span><span class="pun">:</span><span class="pln"> absolute</span><span class="pun">;</span><span class="pln">
+  left</span><span class="pun">:</span><span class="pln">     </span><span class="lit">50</span><span class="pun">%;</span><span class="pln">
+  top</span><span class="pun">:</span><span class="pln">      </span><span class="lit">50</span><span class="pun">%;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>
+This puts the top left corner of the canvas in the center of the screen. The JavaScript auto-resize function described in the next section manipulates additional CSS properties to resize the game area and center it in the window.
+</p>
+
+<p>
+Since the game area is automatically resized according to the dimensions of the window, you do not want the dimensions in pixels for the gameArea div block’s child elements; instead, you want it in percentages. Pixel values do not allow inner elements to scale with the parent div as it changes. However, it may be helpful to start with pixels and then convert them to percentages once you have a layout that you like.
+</p>
+
+<p>
+For this example, start with the game area being 300 pixels tall and 400 pixels wide. The canvas covers the entire game area, and a semitransparent stats panel runs along the bottom at 24 pixels tall, as shown in Figure 1.
+</p>
+
+<figure>
+    <img src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/image00.png" width="482" height="325">
+    <figcaption>
+    Figure 1: Dimensions of gameArea child elements in pixels
+    </figcaption>
+</figure>
+
+<p>
+Translating these values to percentages makes the canvas 100% in width and 100% in height (of gameArea, not the window). Dividing 24 by 300 gives the height of the stats panel at 8%, and, since it will cover the bottom of the game area, it’s width will also be 100%, as seen in Figure 2.
+</p>
+
+<figure>
+  <img src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/image03.png" width="482" height="325">
+  <figcaption>Figure 2: Dimensions of gameArea child elements in percentages</figcaption>
+</figure>
+
+<p>
+Now that you have determined the dimensions of the game area and its child elements, you can put together the CSS properties for the two inside elements as follows:
+</p>
+
+<pre class="prettyprint"><span class="com">#gameCanvas {</span><span class="pln">
+  width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100</span><span class="pun">%;</span><span class="pln">
+  height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100</span><span class="pun">%;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<pre class="prettyprint"><span class="com">#statsPanel {</span><span class="pln">
+  position</span><span class="pun">:</span><span class="pln"> absolute</span><span class="pun">;</span><span class="pln">
+  width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100</span><span class="pun">%;</span><span class="pln">
+  height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">%;</span><span class="pln">
+  bottom</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+  opacity</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0.8</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<h2>Resizing the Game</h2>
+
+<p>Now you are ready to create a function to handle the window being resized. First, grab a reference to the parent gameArea document element.</p>
+
+<pre class="prettyprint"><span class="kwd">var</span><span class="pln"> gameArea </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'gameArea'</span><span class="pun">);</span></pre>
+
+<p>
+Since you are not concerned about the exact width or height, the next piece of information you need to set is the ratio of width to height. Using your earlier reference of a game area of 400 pixels wide and 300 pixels high, you know that you want to set the aspect ratio at 4 units wide and 3 units high.
+</p>
+
+<pre class="prettyprint"><span class="kwd">var</span><span class="pln"> widthToHeight </span><span class="pun">=</span><span class="pln"> </span><span class="lit">4</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> </span><span class="lit">3</span><span class="pun">;</span></pre>
+
+<p>
+Since this function is called whenever the window is resized, you also want to grab the window’s new dimensions so you are able to adjust your game’s dimensions to match. Find this by using the window’s innerWidth and innerHeight properties.
+</p>
+
+<pre class="prettyprint"><span class="kwd">var</span><span class="pln"> newWidth </span><span class="pun">=</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerWidth</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> newHeight </span><span class="pun">=</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerHeight</span><span class="pun">;</span></pre>
+
+<p>
+Just as you determined the ratio of width to height you want, now you can determine the window’s current width to height ratio:
+</p>
+
+<pre class="prettyprint"><span class="kwd">var</span><span class="pln"> newWidthToHeight </span><span class="pun">=</span><span class="pln"> newWidth </span><span class="pun">/</span><span class="pln"> newHeight</span><span class="pun">;</span></pre>
+
+<p>
+This allows you to decide whether to make the game fill the screen vertically or horizontally, as shown in Figure 3.
+</p>
+
+<figure>
+  <img src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/image02.png" width="592" height="283">
+  <figcaption>
+Figure 3: Fitting the gameArea element to the window while maintaining aspect ratio
+  </figcaption>
+</figure>
+
+<p>
+If the desired game area shape is wider than the window’s shape (and height is shorter), you need to fill up the window horizontally and leave margins along the top and bottom. Likewise, if the desired game area shape is higher than the window’s shape (and the width is narrower), you need to fill up the window vertically and leave margins along the left and right.
+</p>
+
+<p>
+To do this, test your desired ratio of width to height with the current window’s ratio of width to height and make the appropriate adjustments as follows:
+</p>
+
+<pre class="prettyprint"><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">newWidthToHeight </span><span class="pun">&gt;</span><span class="pln"> widthToHeight</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// window width is too wide relative to desired game width</span><span class="pln">
+  newWidth </span><span class="pun">=</span><span class="pln"> newHeight </span><span class="pun">*</span><span class="pln"> widthToHeight</span><span class="pun">;</span><span class="pln">
+  gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> newHeight </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+  gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> newWidth </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// window height is too high relative to desired game height</span><span class="pln">
+  newHeight </span><span class="pun">=</span><span class="pln"> newWidth </span><span class="pun">/</span><span class="pln"> widthToHeight</span><span class="pun">;</span><span class="pln">
+  gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> newWidth </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+  gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> newHeight </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>
+Now that you have adjusted the width and height of the game area, you need to center things up by placing a negative margin on the top that is half of the height and on the left that is half of the width. Remember that CSS is already placing the top-left corner of the gameArea div at the exact center of the window, so this centers the game area in the window:
+</p>
+
+<pre class="prettyprint"><span class="pln">gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">marginTop </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(-</span><span class="pln">newHeight </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">marginLeft </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(-</span><span class="pln">newWidth </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span></pre>
+
+<p>
+You would also want to automatically adjust the font size. If you have all of the child elements using em, you can simply set the fontSize CSS property of the gameArea div block to a value determined by its size.
+</p>
+
+<pre class="prettyprint"><span class="pln">gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">fontSize </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">newWidth </span><span class="pun">/</span><span class="pln"> </span><span class="lit">400</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'em'</span><span class="pun">;</span></pre>
+
+<p>
+Lastly, you want to make the canvas drawing dimensions match its new width and height. Note that the rest of the game code must keep game engine dimensions separate from the canvas drawing dimensions to accommodate for a dynamic canvas resolution.
+</p>
+
+<pre class="prettyprint"><span class="kwd">var</span><span class="pln"> gameCanvas </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'gameCanvas'</span><span class="pun">);</span><span class="pln">
+gameCanvas</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> newWidth</span><span class="pun">;</span><span class="pln">
+gameCanvas</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> newHeight</span><span class="pun">;</span></pre>
+
+<p>
+So the completed resize function might look something like this:
+</p>
+
+<pre class="prettyprint"><span class="kwd">function</span><span class="pln"> resizeGame</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> gameArea </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'gameArea'</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> widthToHeight </span><span class="pun">=</span><span class="pln"> </span><span class="lit">4</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> </span><span class="lit">3</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> newWidth </span><span class="pun">=</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerWidth</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> newHeight </span><span class="pun">=</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerHeight</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> newWidthToHeight </span><span class="pun">=</span><span class="pln"> newWidth </span><span class="pun">/</span><span class="pln"> newHeight</span><span class="pun">;</span><span class="pln">
+    
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">newWidthToHeight </span><span class="pun">&gt;</span><span class="pln"> widthToHeight</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        newWidth </span><span class="pun">=</span><span class="pln"> newHeight </span><span class="pun">*</span><span class="pln"> widthToHeight</span><span class="pun">;</span><span class="pln">
+        gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> newHeight </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+        gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> newWidth </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        newHeight </span><span class="pun">=</span><span class="pln"> newWidth </span><span class="pun">/</span><span class="pln"> widthToHeight</span><span class="pun">;</span><span class="pln">
+        gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> newWidth </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+        gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> newHeight </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    
+    gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">marginTop </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(-</span><span class="pln">newHeight </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+    gameArea</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">marginLeft </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(-</span><span class="pln">newWidth </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'px'</span><span class="pun">;</span><span class="pln">
+    
+    </span><span class="kwd">var</span><span class="pln"> gameCanvas </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'gameCanvas'</span><span class="pun">);</span><span class="pln">
+    gameCanvas</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> newWidth</span><span class="pun">;</span><span class="pln">
+    gameCanvas</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> newHeight</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>
+Now, you want these adjustments to be made automatically whenever the window is resized or, in the case of mobile devices, the screen orientation is changed. Handle these events by having them call your resizeGame() function like so:
+</p>
+
+<pre class="prettyprint"><span class="pln">window</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">'resize'</span><span class="pun">,</span><span class="pln"> resizeGame</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">);</span><span class="pln">
+window</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">'orientationchange'</span><span class="pun">,</span><span class="pln"> resizeGame</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">);</span></pre>
+
+<p>
+If the window is resized too high or the screen’s orientation is vertical, you are making width 100% of the window, and if the window is resized too wide or the screen’s orientation is horizontal, you are making height 100% of the window. The remaining dimension is sized according to the predetermined width-to-height aspect ratio.
+</p>
+
+<h2>Summary</h2>
+
+<p>
+Gopherwood Studios has used versions of this structure for all of our HTML5 games and it has proved very useful for accommodating multiple screen resolutions and various mobile devices. Additionally, with the aid of a full screen browser, this gives our web games an immersive experience more akin to traditional desktop gaming than many browser-based games. We look forward to more innovations in web games as HTML5 and web technologies continue to evolve.
+</p>
+
+
+      </div>
+    </section>
+  </article>
+
+  
+  <section class="disqus pattern-bg-lighter">
+
+    <div id="disqus" class="container">
+
+      <h2>Comments</h2>
+
+      <div id="disqus_thread">
+
+        <a href="http://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/#disqus_thread" class="load-comments" data-disqus-identifier="http://www.html5rocks.com/tutorials/casestudies/gopherwoord-studios-resizing-html5-games.html">44</a>
+
+      </div>
+    </div>
+
+    <noscript>
+      &lt;p class="center"&gt;
+        &lt;strong&gt;
+          &lt;a href="http://disqus.com/?ref_noscript"&gt;Please enable JavaScript to view the comments powered by Disqus.&lt;/a&gt;
+        &lt;/strong&gt;
+      &lt;/p&gt;
+    </noscript>
+
+    <script>
+
+      var disqus_shortname = 'html5rocks';
+      var disqus_identifier = 'http://www.html5rocks.com/tutorials/casestudies/gopherwoord-studios-resizing-html5-games.html';
+      var disqus_url = 'http://www.html5rocks.com/tutorials/casestudies/gopherwoord-studios-resizing-html5-games.html';
+      var disqus_developer = 0;
+
+      var disqus_config = function () {
+        var funky_language_code_mapping = {
+          'de': 'de_inf',
+          'es': 'es_ES',
+          'pt': 'pt_EU',
+          'sr': 'sr_CYRL',
+          'sv': 'sv_SE',
+          'zh': 'zh_HANT'
+        };
+        this.language = funky_language_code_mapping['en'] ||
+                        'en';
+
+        this.callbacks.onReady = [ function () {
+                                      try {
+                                        _gaq.push(['_trackEvent', 'View comments']);
+                                      } catch(err){}
+                                   } ];
+        this.callbacks.onNewComment = [ function (comment) {
+                                          try {
+                                            _gaq.push(['_trackEvent', 'Commented']);
+                                          } catch(err){}
+                                        } ];
+      };
+
+      window.addEventListener('load', function(e) {
+
+        var c = document.createElement('script');
+        c.type = 'text/javascript';
+        c.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        c.async = true;
+
+        var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+        sp.insertBefore(c, s);
+
+        if (window.location.hash === '#disqus_thread')
+          loadComments();
+
+      }, false);
+
+      var disqus_loaded = false;
+      function loadComments() {
+
+        if (disqus_loaded)
+          return;
+
+        disqus_loaded = true;
+
+        _gaq.push(['_trackEvent', 'Interactions', 'Comments', 'Comments Loaded']);
+
+        var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+
+        var disqusContainer = document.getElementById('disqus');
+        disqusContainer.classList.add('active');
+
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        sp.insertBefore(dsq, s);
+      }
+
+      function outgoing(url) {
+        try {
+          _gaq.push(['_trackEvent', 'Outbound Links' , url]);
+        } catch(err){}
+      }
+      // Open external links (also that don't have a target defined) in a new tab.
+      var externLinks = document.querySelectorAll('article.tutorial a[href^="http"]:not([target])');
+      for(var i = 0, a; a = externLinks[i]; ++i) {
+        a.target = '_blank';
+        a.addEventListener('click', new Function('outgoing(' + '"' + a.href.replace(/.*?:\/\//g, "") + '"' + ');'));
+      }
+
+      var loadCommentsButtons = document.querySelectorAll('.load-comments');
+      for(var l = 0; l < loadCommentsButtons.length; l++)
+        loadCommentsButtons[l].addEventListener('click', loadComments);
+
+    </script>
+  </section>
+  
+
+  <footer>
+    <div class="container">
+
+      
+        <h1>Next steps</h1>
+
+        
+
+        <aside class="panel share">
+          <h2>Share</h2>
+
+            <a href="https://twitter.com/share?url=http://www.html5rocks.com/tutorials/casestudies/gopherwoord-studios-resizing-html5-games.html&text=Case%20Study:%20Auto-Resizing%20HTML5%20Games&lang=en&via=ChromiumDev&related=ChromiumDev" class="twitter" target="_blank">Twitter</a>
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.html5rocks.com/tutorials/casestudies/gopherwoord-studios-resizing-html5-games.html" class="facebook" target="_blank">Facebook</a>
+
+            <a href="https://plus.google.com/share?url=http://www.html5rocks.com/tutorials/casestudies/gopherwoord-studios-resizing-html5-games.html" class="gplus" onclick="javascript:window.open(this.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">Google+</a>
+
+        </aside>
+
+        <aside class="panel rss">
+          <h2>Subscribe</h2>
+          <p>Enjoyed this article? Grab the <a href="http://feeds.feedburner.com/html5rocks">RSS feed</a> and stay up-to-date.</p>
+        </aside>
+
+      
+
+      <p class="licensing">
+      
+        Except as otherwise <a href="http://code.google.com/policies.html#restrictions">noted</a>, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+      
+      </p>
+
+    </div>
+  </footer>
+
+  <script>
+    window.isCompatible = function() {
+      
+
+    };
+
+    if (isCompatible() === false) {
+      document.getElementById('notcompatible').className = '';
+    }
+
+    function _prettyPrint() {
+      if (typeof customPrettyPrintLanguage != 'undefined') {
+        customPrettyPrintLanguage();
+      }
+      prettyPrint();
+    }
+  </script>
+  <script async="" src="./Case Study  Auto-Resizing HTML5 Games - HTML5 Rocks_files/prettify.min.js" onload="_prettyPrint()"></script>
+
+
+  </div>
+
+  <script>
+  (function() {
+
+    // Kill feedburner and marketing tracking arguments, but let them register
+    // before we do it.
+    setTimeout(function() {
+      if (/^\?utm_/.test(document.location.search) &&
+          window.history.replaceState) {
+        window.history.replaceState(
+            {}, '', document.location.href.replace(/\?utm_.*/, ''));
+      }
+    }, 2000);
+
+    var siteHeader = document.getElementById('siteheader');
+    var navToggle = document.getElementById('navtoggle');
+    var siteNav = document.getElementById('sitenav');
+
+    function toggle(target, forceActive) {
+
+      if (typeof toc !== 'undefined') {
+        // Switch off whichever one is not the
+        // current target
+        if (target === toc)
+          siteNav.classList.remove('active');
+        else
+          toc.classList.remove('active');
+      }
+
+      // Toggle if no force parameter is set
+      if (typeof forceActive === 'undefined') {
+        target.classList.toggle('active');
+      } else {
+        if (forceActive)
+          target.classList.add('active');
+        else
+          target.classList.remove('active');
+      }
+
+      // now find out what the set state ended up being
+      var isActive = target.classList.contains('active');
+
+      if (isActive)
+        siteHeader.classList.add('expanded');
+      else
+        siteHeader.classList.remove('expanded');
+
+    }
+
+    navToggle.addEventListener('click', function(e) {
+      toggle(siteNav);
+      e.preventDefault();
+    });
+
+    
+
+    var tocToggle = document.getElementById('toctoggle');
+    var toc = document.getElementById('toc');
+    var articleMeta = document.getElementById('article-meta');
+    var articleContent = document.getElementById('article-content');
+    var articleMetaHeight = 0;
+    var articleMetaMaxY = 0;
+    var articleMetaMinY = 0;
+    var articleContentPadding = 200;
+
+    var tocLinks = document.querySelectorAll('.toc a');
+    for (var t = 0; t < tocLinks.length; t++)
+      tocLinks[t].addEventListener('click', onTocLinkClick);
+
+    tocToggle.addEventListener('click', function(e) {
+      toggle(toc);
+      e.preventDefault();
+    });
+
+    toc.addEventListener('click', function(e) {
+      if (e.target !== siteNav)
+        toggle(toc, false);
+    });
+
+    function onTocLinkClick() {
+      _gaq.push(['_trackEvent', 'Interactions', 'TOC', 'TOC Clicked']);
+    }
+
+    function setMinScrollYFromMetaY() {
+      var scrollPosition = window.scrollY;
+
+      var articleMetaBounds = articleMeta.getBoundingClientRect();
+      var articleMetaTop = Math.max(352,
+          articleMetaBounds.top - 20 + scrollPosition);
+
+      articleMetaHeight = articleMetaBounds.bottom - articleMetaBounds.top;
+      articleMetaMinY = articleMetaTop;
+    }
+
+    function setMaxScrollYFromContentHeight() {
+
+      var scrollPosition = window.scrollY;
+
+      var articleContentBounds = articleContent.getBoundingClientRect();
+      var articleContentTop = articleContentBounds.top + scrollPosition;
+      var articleContentHeight = articleContentBounds.bottom - articleContentBounds.top;
+
+      articleMetaMaxY = articleContentTop +
+          articleContentHeight -
+          articleMetaHeight -
+          articleContentPadding;
+
+    }
+
+    function onScroll(e) {
+
+      if (window.scrollY >= articleMetaMinY) {
+
+        articleMeta.classList.add('sticky');
+
+        var articleMetaTop = 22 - Math.max(0, window.scrollY - articleMetaMaxY);
+        articleMeta.style.top = articleMetaTop + 'px';
+
+      } else {
+        articleMeta.classList.remove('sticky');
+        articleMeta.style.top = 'auto';
+      }
+    }
+
+    if (articleMeta.getBoundingClientRect) {
+      setMinScrollYFromMetaY();
+      setMaxScrollYFromContentHeight();
+      document.addEventListener('scroll', onScroll);
+      window.addEventListener('load', setMaxScrollYFromContentHeight, false);
+    }
+
+    
+  })();
+  </script>
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15028909-1']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+
+
+</body></html>

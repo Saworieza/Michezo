@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="WT.seg_1" content="en-us"><link rel="canonical" href="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows).html">
+        <title>Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/gg601425(d=default,l=en-us,v=vs.85).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/gg601425(d=default,l=en-us,v=vs.85).aspx">
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/gg601425(d=default,l=en-us,v=vs.85).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/gg601425(d=default,l=en-us,v=vs.85).aspx">
+
+<meta name="MN" content="EE4293C0-5:42:03 AM">
+
+<meta name="Search.ShortId" content="gg601425">
+
+<meta name="ms.shortidmsdn" content="gg601425">
+
+<meta name="Ms.Locale" content="en-us">
+
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/Combined.css"><script type="text/javascript" async="" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/ms2.js"></script><script type="text/javascript" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/ai.js" async=""></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/jquery-1.8.2.min.js"></script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/en-us/library/gg601425(d=default,l=en-us,v=vs.85).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+
+
+
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+
+
+
+  var detectedLocale = 'en-us';
+  var wtsp = 'msdnlib_webdev';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/wtid.js"></script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "6a6f070e-34cb-42b0-9d81-3bb7857011f6";
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script class="mtps-injected">try {
+//
+
+            window.appInsightsId = '60854590-027a-4ae4-98be-2741a40f355f';
+            //
+} finally { MTPS._injectNextScript_4 && MTPS._injectNextScript_4(); }</script><script class="mtps-injected" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/Combined.js"></script><script class="mtps-injected" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/SearchBox.jss"></script><script class="mtps-injected" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/Combined(1).js"></script><script class="mtps-injected" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/jquery.tmpl.min.js"></script><script class="mtps-injected" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/Combined(2).js"></script><script src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/broker.js"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_10 && MTPS._injectNextScript_10(); }</script><link href="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/PrintView.css" rel="stylesheet" type="text/css" media="print"></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+        
+    <link type="text/css" rel="stylesheet">
+    
+    <input type="hidden" id="isHeaderBleeding" value="true">
+    <div id="ux-header" dir="ltr" class="ltr msdn">
+        
+
+        <header>
+            <div class="row">
+                <div class="top mobile"></div>
+                <div class="left">
+                    <div class="siteLogo">  
+                        
+<a class="msdnLogoImg" href="http://msdn.microsoft.com/">
+                             <img src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/microsoftLogoForHeader.png">
+                         </a>
+                                                             
+                        <div data-fragmentname="SiteLogo" id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="LinkWithImage topImage">
+    <a id="SiteLogo_2152_1" href="http://msdn.microsoft.com/">
+                
+                Developer Network
+            </a>
+  </div>
+</div>    
+                    </div>
+                    <div id="grip"></div>
+                </div>
+                
+                <div class="right desktop">
+                    <div class="auxNav">
+                        <div data-fragmentname="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://msdn.microsoft.com/subscriptions/manage/hh442900" id="Subscriptions_2153_1" xmlns="http://www.w3.org/1999/xhtml">MSDN subscriptions</a>
+</div>   
+                        <div data-fragmentname="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://go.microsoft.com/fwlink/?LinkId=309297&clcid=0x409&slcid=0x409" id="GetTools_2153_3" xmlns="http://www.w3.org/1999/xhtml">Get tools</a>
+</div>   
+                        <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1399293723&rver=6.0.5276.0&wp=MCLBI&wlcxt=MSDN%24MSDN%24MSDN&wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fgg601425%2528v%3dvs.85%2529.aspx&lc=1033&id=254354&mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+                    </div>
+                    <div data-fragmentname="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+      <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" autocomplete="off">
+      <button id="HeaderSearchButton" value="" type="submit" class="header-search-button" title="Search MSDN"></button>
+    <div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(59, 59, 59); font-family: Arial; font-size: 13px;"><div id="SuggestionContainer"><ul style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></form>
+    
+    
+  </div>
+</div> 
+                </div>
+            </div>
+       
+            <div class="row" id="droor" style="display: block;">
+                <div class="left" style="max-width: 1167px;">
+                            <nav>
+            <ul>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn308572" title="Home">Home</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn614592" title="Technologies">Technologies</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn629512" title="Cloud">Cloud</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn629516" title="Mobile">Mobile</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn629514" title="Web">Web</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn629388" title="Business">Business</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn629513" title="Data">Data</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn629515" title="Gaming">Gaming</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271880" title="Dev centers">Dev centers</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn338064" title="Connect">Connect</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://tech-advisors.msdn.microsoft.com/en-us" title="Tech Advisors">Tech Advisors</a></li>
+                                                 <li><a href="http://events.msdn.microsoft.com/en-us" title="Events">Events</a></li>
+                                                 <li><a href="http://social.msdn.microsoft.com/forums/" title="Forums">Forums</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn292944" title="Downloads">Downloads</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn369242" title="Developer tools">Developer tools</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369240" title="SDKs">SDKs</a></li>
+                                                 <li><a href="https://msdn.microsoft.com/subscriptions/manage/hh442900" title="MSDN subscriptions">MSDN subscriptions</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="current active">
+
+                         <a href="http://msdn.microsoft.com/library" title="Library">Library</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://code.msdn.microsoft.com/" title="Samples">Samples</a>
+
+                     </li>
+            </ul>
+          
+        </nav>        
+
+                </div>
+                <div class="right mobile"></div>
+                
+                <div data-fragmentname="SocialLinks" id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Follow us</div>
+    <ul class="links horizontal">
+      <li>
+        <a href="http://www.facebook.com/microsoftdeveloper" target="_blank" id="SocialLinks_2152_4" class="facebook" xmlns="http://www.w3.org/1999/xhtml">http://www.facebook.com/microsoftdeveloper</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/msdev" target="_blank" id="SocialLinks_2152_5" class="twitter" xmlns="http://www.w3.org/1999/xhtml">https://twitter.com/msdev</a>
+      </li>
+      <li>
+        <a href="http://plus.google.com/111221966647232053570/" target="_blank" id="SocialLinks_2152_6" class="googlePlus" xmlns="http://www.w3.org/1999/xhtml">http://plus.google.com/111221966647232053570/</a>
+      </li>
+    </ul>
+  </div>
+</div> 
+                
+                <span id="singleCol"></span>
+                <span id="doubleCol"></span>
+            </div>
+            
+
+        </header>
+    </div>
+    
+    
+
+        
+    <div class="printExportMenus ltr">
+        <a id="isd_printABook" href="http://msdn.microsoft.com/en-us/library/export/help/?returnUrl=%2fen-us%2flibrary%2fgg601425(v%3dvs.85).aspx" style="display: inline;">
+            Export (<span class="count">0</span>)
+        </a>
+        <a id="isd_print" href="http://msdn.microsoft.com/en-us/library/gg601425(d=printer,v=vs.85).aspx" rel="nofollow">
+            Print 
+        </a>
+    </div>
+    
+
+        <div class="printExportMenus ltr">
+        <a id="expandCollapseAll" href="javascript:void(0)" style="display: none;">Expand All</a>
+    </div>
+
+    
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+
+    <div id="leftNav" style="width: 280px; max-width: 480px; min-height: 3226px; height: 434px;">
+
+
+
+<div id="tocnav" style="width: 280px; position: fixed; top: 60px;">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/ms123401.aspx" id="ms310241_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_en-us" mtpsshortid="ms123401_MSDN.10_en-us" title="MSDN Library">MSDN Library</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/aa155073.aspx" id="aa155073_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="MSDN|webdev|$\webdev.hxt@0,0_MSDN.10_en-us" mtpsshortid="aa155073_MSDN.10_en-us" title="Web Development">Web Development</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/hh772401(v=vs.85).aspx" id="hh757288_VS.85_en-us" mtpsaliasid="" mtpsassetid="273f55b5-1ce9-4c72-972b-43053eb89510_VS.85_en-us" mtpsshortid="hh772401_VS.85_en-us" title="Internet Explorer">Internet Explorer</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/hh772408(v=vs.85).aspx" id="hh757289_VS.85_en-us" mtpsaliasid="" mtpsassetid="3DC73C7F-9449-470B-A27E-104CAA24DC1E_VS.85_en-us" mtpsshortid="hh772408_VS.85_en-us" title="What&#39;s New in Internet Explorer">What's New in Internet Explorer</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/gg491737(v=vs.85).aspx" id="dn385819_VS.85_en-us" mtpsaliasid="" mtpsassetid="7d47098a-d409-4a26-be9f-2d3423d6f2c2_VS.85_en-us" mtpsshortid="gg491737_VS.85_en-us" title="Internet Explorer 9 Samples and Tutorials">Internet Explorer 9 Samples and Tutorials</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/gg589511(v=vs.85).aspx" id="dn385829_VS.85_en-us" mtpsaliasid="" mtpsassetid="66185700-BDFE-45E7-BDB1-25ECDF64360B_VS.85_en-us" mtpsshortid="gg589511_VS.85_en-us" title="HTML5 Graphics">HTML5 Graphics</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/gg589510(v=vs.85).aspx" id="dn385831_VS.85_en-us" mtpsaliasid="" mtpsassetid="A2FBEAD8-339A-4748-901C-CEA5D18E07A1_VS.85_en-us" mtpsshortid="gg589510_VS.85_en-us" title="HTML5 Canvas">HTML5 Canvas</a>            </div>
+            <div class="toclevel1" data-toclevel="1" data-childrenloaded="true" style="padding-left: 17px;">
+<a class="toc_expanded" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/gg589490(v=vs.85).aspx" id="dn385833_VS.85_en-us" mtpsaliasid="" mtpsassetid="BE1B8479-6B70-4EF6-A760-4AD5ADB4A9EF_VS.85_en-us" mtpsshortid="gg589490_VS.85_en-us" title="How to Use Canvas to Create a Space Game">How to Use Canvas to Create a Space Game</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Drawing the background and vehicle for a game using HTML5 canvas and JavaScript">Drawing the background and vehicle for a game using HTML5 canvas and JavaScript</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/gg589516(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using HTML5 canvas and JavaScript to move a vehicle in a game">Using HTML5 canvas and JavaScript to move a vehicle in a game</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/gg589497(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using HTML5 canvas and JavaScript to detect collisions between vehicles in a game">Using HTML5 canvas and JavaScript to detect collisions between vehicles in a game</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/gg589518(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using HTML5 canvas and JavaScript to remove obstacles in a game and track scoring">Using HTML5 canvas and JavaScript to remove obstacles in a game and track scoring</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)" style="left: 280px; display: inline-block;">
+    <img class="cl_nav_resize_open" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/ImageSprite.png" title="Expand" alt="Expand">
+    <img class="cl_nav_resize_close" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/ImageSprite.png" title="Minimize" alt="Minimize" style="display: none;">
+</a>
+
+
+
+    </div>
+<div id="content" class="content" style="margin-left: 280px; width: auto;">
+
+
+
+
+
+
+    
+    
+
+    <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: none;"></div>
+
+    
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Drawing the background and vehicle for a game using HTML5 canvas and JavaScript</h1><div id="ratingCounter" style="display: block;">
+        <span id="rcA" class="ratingText">
+            5 out of 7 rated this helpful <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#feedback" title="Rate this topic">Rate this topic</a>
+            
+        </span>
+    </div>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>
+</p><p>This topic explains how to use HTML5 canvas and JavaScript to draw a star field background and a flying vehicle for a game you create. </p>
+
+<p>
+</p><ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#spacegame_background_sample">Canvas  code sample</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#spacegame_background_discussion">Canvas  code sample discussion</a><ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#spacegame_background_body_code">Body code</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#spacegame_background_script_code">Script code</a></li>
+</ul>
+</li>
+<li><a href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#related_topics">Related topics</a></li>
+</ul>
+
+<h2><a id="spacegame_background_intro"></a><a id="SPACEGAME_BACKGROUND_INTRO"></a></h2>
+<p>This topic includes a stand-alone annotated code sample  that shows you how to use HTML5 Canvas and JavaScript to create a random field of white stars and draw a green and orange spaceship that looks like a flying saucer. This game imagery is created using pixels. Canvas has the ability to put pixels directly on the screen by using immediate mode. This feature makes it easy to draw points, lines, and shapes exactly where you want them to go and in whatever color you choose. This code sample will show you how to create the spaceship by combining  mathematical bezier curves and coloring in the shape. Then it explains how to draw stars by using small circles made out of arcs.</p>
+<p>This code sample covers the following tasks that demonstrate the basic principles of using Canvas to draw these game elements:</p>
+<p>
+</p><ul>
+<li>Adding a Canvas element to a webpage
+</li>
+<li>Creating a black background</li>
+<li>Drawing random stars on the background</li>
+<li>Adding a spaceship to the background</li>
+</ul>
+
+<p>At the end of the code sample is discussion material that explains more about the design and structure of these tasks and how they work.</p>
+<h2><a id="spacegame_background_sample"></a><a id="SPACEGAME_BACKGROUND_SAMPLE"></a>Canvas  code sample</h2>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5672519f-22ab-41c2-8fe6-61086db3753a');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5672519f-22ab-41c2-8fe6-61086db3753a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  
+  &lt;head&gt;
+    &lt;script type="text/javascript"&gt;
+      // This function is called on page load.
+
+
+      function canvasSpaceGame() {
+
+        // Get the canvas element.
+        canvas = document.getElementById("myCanvas");
+
+        // Make sure you got it.
+        if (canvas.getContext)
+
+        // If you have it, create a canvas user inteface element.
+        {
+          // Specify 2d canvas type.
+          ctx = canvas.getContext("2d");
+
+          // Paint it black.
+          ctx.fillStyle = "black";
+          ctx.rect(0, 0, 300, 300);
+          ctx.fill();
+
+          // Paint the starfield.
+          stars();
+
+          // Draw space ship.
+          makeShip();
+        }
+      }
+
+      // Paint a random starfield.
+
+
+      function stars() {
+
+        // Draw 50 stars.
+        for (i = 0; i &lt;= 50; i++) {
+          // Get random positions for stars.
+          var x = Math.floor(Math.random() * 299)
+          var y = Math.floor(Math.random() * 299)
+
+          // Make the stars white
+          ctx.fillStyle = "white";
+
+          // Give the ship some room.
+          if (x &lt; 30 || y &lt; 30) ctx.fillStyle = "black";
+
+          // Draw an individual star.
+          ctx.beginPath();
+          ctx.arc(x, y, 3, 0, Math.PI * 2, true);
+          ctx.closePath();
+          ctx.fill();
+        }
+      }
+
+      function makeShip() {
+
+        // Draw saucer bottom.
+        ctx.beginPath();
+        ctx.moveTo(28.4, 16.9);
+        ctx.bezierCurveTo(28.4, 19.7, 22.9, 22.0, 16.0, 22.0);
+        ctx.bezierCurveTo(9.1, 22.0, 3.6, 19.7, 3.6, 16.9);
+        ctx.bezierCurveTo(3.6, 14.1, 9.1, 11.8, 16.0, 11.8);
+        ctx.bezierCurveTo(22.9, 11.8, 28.4, 14.1, 28.4, 16.9);
+        ctx.closePath();
+        ctx.fillStyle = "rgb(222, 103, 0)";
+        ctx.fill();
+
+        // Draw saucer top.
+        ctx.beginPath();
+        ctx.moveTo(22.3, 12.0);
+        ctx.bezierCurveTo(22.3, 13.3, 19.4, 14.3, 15.9, 14.3);
+        ctx.bezierCurveTo(12.4, 14.3, 9.6, 13.3, 9.6, 12.0);
+        ctx.bezierCurveTo(9.6, 10.8, 12.4, 9.7, 15.9, 9.7);
+        ctx.bezierCurveTo(19.4, 9.7, 22.3, 10.8, 22.3, 12.0);
+        ctx.closePath();
+        ctx.fillStyle = "rgb(51, 190, 0)";
+        ctx.fill();
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  
+  &lt;body onload="canvasSpaceGame()"&gt;
+    &lt;h1&gt;
+      Canvas Space Game
+    &lt;/h1&gt;
+    &lt;canvas id="myCanvas" width="300" height="300"&gt;
+    &lt;/canvas&gt;
+  &lt;/body&gt;
+
+&lt;/html&gt;
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="spacegame_background_discussion"></a><a id="SPACEGAME_BACKGROUND_DISCUSSION"></a>Canvas  code sample discussion</h2>
+<p>This section explains the design and structure of the code sample. It tells you about the different parts and how they fit together. The Canvas sample uses a standard HTML5 header, &lt;!doctype html&gt;, so that browsers can distinguish it as part of the HTML5 specification.</p>
+<p>This code is divided into two major parts:</p><ul>
+<li>Body Code</li>
+<li>Script Code</li>
+</ul>
+
+<h3><a id="spacegame_background_body_code"></a><a id="SPACEGAME_BACKGROUND_BODY_CODE"></a>Body code</h3>
+<p>The body tag uses the onload function to call the <strong>canvasSpaceGame</strong> function when the page is loaded. The canvas tag is part of the body. The initial width and height of the Canvas is specified, as is the ID attribute. The ID is required so that the canvas element can be added to the object model of the page.</p>
+<h3><a id="spacegame_background_script_code"></a><a id="SPACEGAME_BACKGROUND_SCRIPT_CODE"></a>Script code</h3>
+<p>The script code includes three functions: <strong>canvasSpaceGame</strong>, <strong>stars</strong>, and <strong>makeShip</strong>. The <strong>canvasSpaceGame</strong> function is called when the page is loaded. The <strong>stars</strong> and <strong>makeShip</strong> are called from <strong>canvasSpaceGame</strong>.</p>
+<h3><a id="spacegame_background_canvasSpaceGame"></a><a id="spacegame_background_canvasspacegame"></a><a id="SPACEGAME_BACKGROUND_CANVASSPACEGAME"></a>canvasSpaceGame function</h3>
+<p>This function is called on page load. It gets the canvas by using the ID of the canvas element in the body code. It then gets the context of the canvas, making it ready to accept drawing. After the context is initialized as a 2D canvas, the canvas is painted black by using the <a href="http://msdn.microsoft.com/en-us/library/ff974906(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">fillStyle</strong></a> property, and the <a href="http://msdn.microsoft.com/en-us/library/ff975425(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">rect</strong></a> and <a href="http://msdn.microsoft.com/en-us/library/ff975415(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">fill</strong></a> methods.</p>
+<h3><a id="spacegame_background_stars"></a><a id="SPACEGAME_BACKGROUND_STARS"></a>stars function</h3>
+<p>This function is called from <strong>canvasSpaceGame</strong>. It uses a <em>for loop</em> to generated 50 potential star positions on an x,y surface, and <a href="http://msdn.microsoft.com/en-us/library/ff974906(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">fillStyle</strong></a> is used to create a white color. Then a check is made to see if the x,y coordinates are too close to the  upper-left corner. If a star might be drawn too close to the upper-left corner, the <strong>fillStyle</strong> is changed to black so it does not interfere with the space ship.  Then each star is drawn with the <a href="http://msdn.microsoft.com/en-us/library/ff975305(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">arc</strong></a> method and the appropriate fill color is used. </p>
+<h3><a id="spacegame_background_makeShip"></a><a id="spacegame_background_makeship"></a><a id="SPACEGAME_BACKGROUND_MAKESHIP"></a>makeShip</h3>
+<p>This function is called from <strong>canvasSpaceGame</strong>. Using a series of <a href="http://msdn.microsoft.com/en-us/library/ff975405(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">beginPath</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/ff975422(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">moveTo</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/ff975406(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">bezierCurveTo</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/ff975409(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">closePath</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/ff974906(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">fillStyle</strong></a>, and <a href="http://msdn.microsoft.com/en-us/library/ff975415(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">fill</strong></a> methods, a simple space ship is drawn. </p>
+<p>The ship was created by drawing two ovals, one on top of the other. It was first drawn in Adobe Illustrator CS5, and the image was exported to Canvas by using the Ai2Canvas plug-in from <code>http://visitmix.com/labs/ai2canvas/</code>. The resulting Canvas code was copied and pasted into the code for this sample. </p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/gg589490(v=vs.85).aspx">How to Use Canvas to Create a Space Game</a>
+</dt>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</div>
+
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>Community Additions</h2>
+                <a class="communityContentAddLink" href="http://msdn.microsoft.com/en-us/library/community/add/gg601425(v=vs.85).aspx">
+                    <span class="communityContentAddButton" title="Add">
+                        ADD
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/en-us/library/community/comments/gg601425(v=vs.85).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit">Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected">Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings.">
+
+
+ 
+</div>
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="DBBM7J1L8I02xn8OyHE77wO6tLgI6-2FGIvLmmPr-Jtip_OWwJkEDjLlUNmThVywZ7BpPOomu27gCdyB6m3hiJ6w9GM1">
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/gg601425(v=vs.85).aspx">
+<input id="isTopicRated" type="hidden" value="false">
+
+
+
+
+        
+    <link type="text/css" rel="stylesheet">
+    
+    <div id="ux-footer" class="" style="" dir="ltr">
+        <footer class="top">
+            <div data-fragmentname="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Dev centers</div>
+    <ul class="links">
+      <li>
+        <a href="http://msdn.microsoft.com/windows" id="LeftLinks_2148_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+      </li>
+      <li>
+        <a href="http://dev.windowsphone.com/" id="LeftLinks_2148_2" class="windowsPurple" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/office" id="LeftLinks_2148_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/vstudio" id="LeftLinks_2148_4" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+      </li>
+      <li>
+        <a href="http://developer.nokia.com/" title="Nokia" id="LeftLinks_2148_15" class="nokia" xmlns="http://www.w3.org/1999/xhtml">Nokia</a>
+      </li>
+      <li>
+        <a href="http://azure.microsoft.com/en-us/documentation/" target="_blank" id="LeftLinks_2148_12" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/aa937802" id="LeftLinks_2148_5" xmlns="http://www.w3.org/1999/xhtml">More...</a>
+      </li>
+    </ul>
+  </div>
+</div>    
+            <div id="rightLinks">
+                <div data-fragmentname="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Learning resources</div>
+    <ul class="links">
+      <li>
+        <a href="http://www.microsoftvirtualacademy.com/" id="CenterLinks1_2151_4" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="http://channel9.msdn.com/" id="CenterLinks1_2151_5" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+      </li>
+      <li>
+        <a href="http://www.interoperabilitybridges.com/" id="CenterLinks1_2151_6" xmlns="http://www.w3.org/1999/xhtml">Interoperability Bridges</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/magazine/" id="CenterLinks1_2151_7" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Community</div>
+    <ul class="links">
+      <li>
+        <a href="http://social.msdn.microsoft.com/forums/en-us/home" id="CenterLinks2_2151_8" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+      </li>
+      <li>
+        <a href="http://blogs.msdn.com/b/developer-tools/" id="CenterLinks2_2151_9" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+      </li>
+      <li>
+        <a href="http://www.codeplex.com/" id="CenterLinks2_2151_10" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Support</div>
+    <ul class="links">
+      <li>
+        <a href="http://msdn.microsoft.com/hh361695" id="CenterLinks3_2151_11" xmlns="http://www.w3.org/1999/xhtml">Self support</a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/" id="CenterLinks3_2151_12" xmlns="http://www.w3.org/1999/xhtml">Other support options</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" class="nth-child-4n">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Programs</div>
+    <ul class="links">
+      <li>
+        <a href="http://www.microsoft.com/bizspark/" id="CenterLinks4_2151_13" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+      </li>
+      <li>
+        <a href="https://www.dreamspark.com/" id="CenterLinks4_2151_14" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+      </li>
+      <li>
+        <a href="https://www.microsoft.com/faculty" id="CenterLinks4_2151_15" xmlns="http://www.w3.org/1999/xhtml">Faculty Connection</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/student/" id="CenterLinks4_2151_16" xmlns="http://www.w3.org/1999/xhtml">Microsoft Student</a>
+      </li>
+    </ul>
+  </div>
+</div>
+    
+    <div class="feedbackContainer">
+        <div id="feedbackSection1" class="clear">
+            <div class="left">Did you find this helpful?</div>
+            <div class="left">
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackYes" value="1" class="feedbackYesClick" data-enhance="false"><label class="feedbackYesClick" for="feedbackYes"> Yes</label>
+                </div>
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackNo" value="0" class="feedbackNoClick" data-enhance="false"><label class="feedbackNoClick" for="feedbackNo"> No</label>
+                </div>
+            </div>
+            <a class="rateThisAnchor" name="feedback"></a>
+        </div>
+        <div id="feedbackSection2" class="clear">
+        </div>
+        <div id="feedbackSection3" class="clear">
+                    <div>
+                        <input id="checkboxNo201" name="chkbxNo" type="checkbox" value="201" data-enhance="false">
+                        <label for="checkboxNo201">Not accurate</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo202" name="chkbxNo" type="checkbox" value="202" data-enhance="false">
+                        <label for="checkboxNo202">Not enough depth</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo203" name="chkbxNo" type="checkbox" value="203" data-enhance="false">
+                        <label for="checkboxNo203">Need more code examples</label>
+                    </div>
+        </div>
+        <div id="feedbackSection4" class="clear">
+            <div>
+                <textarea id="feedbackTextArea" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" data-enhance="false">Tell us more...</textarea>
+            </div>
+            <div class="left"><span class="counter">(<span id="feedbackTextCounter">1500</span> characters remaining)</span></div>
+            <div class="right">
+                <button type="button" id="feedbackSubmit" title="Click to Submit Feedback" data-enhance="false">Submit</button>
+            </div>
+        </div>
+        <div id="feedbackSection5">Thank you for your feedback</div>
+        <input id="feedbackValue" type="hidden" value="">
+        <input id="tellUsMoreText" type="hidden" value="Tell us more...">
+        <input id="maxTextBoxCharacters" type="hidden" value="1500">
+        <input type="hidden" id="submitUrl" value="/en-us/msdn/ux/uxservices/feedback/add/footer(v=vs.85)">
+        <input type="hidden" id="feedbackSiteName" name="feedbackSiteName" value="">
+        <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+        <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+        <input type="hidden" id="ClientIP" name="ClientIP" value="">
+        <input type="hidden" id="ClientOS" name="ClientOS" value="">
+        <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+        <input type="hidden" id="ClientTime" name="ClientTime" value="">
+        <input type="hidden" id="ClientDate" name="ClientDate" value="">
+    </div>
+    
+            </div>
+        </footer>
+    
+        <footer class="bottom">
+            <span class="localeContainer">
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fgg601425(v%3dvs.85).aspx">
+        <a href="http://msdn.microsoft.com/en-us/library/gg601425(v=vs.85).aspx#" onclick="$(&#39;#selectLocaleForm&#39;).submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+            </span>
+        
+            <div data-fragmentname="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <ul class="links horizontal">
+      <li>
+        <a href="http://msdn.microsoft.com/newsletter.aspx" id="BottomLinks_2148_7" xmlns="http://www.w3.org/1999/xhtml">Newsletter</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/dn529288" id="BottomLinks_2148_8" xmlns="http://www.w3.org/1999/xhtml">Privacy &amp; cookies</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/cc300389" id="BottomLinks_2148_9" xmlns="http://www.w3.org/1999/xhtml">Terms of use</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" id="BottomLinks_2148_10" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+      </li>
+    </ul>
+  </div>
+</div>    
+            <span class="logoLegal">
+                <span class="logo"></span>
+                <span class="copyright">© 2014 Microsoft</span>
+            </span>
+        </footer>
+    </div>
+    
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+    
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="rURL5lWfO0H3hxtiDdkQHeQbKkigh_shapFX6yg5eRWCifMpVNonQg1uoiJX_0yMMH6M6DFlsLd8JWTpu8KVVqaoIYI1">
+</div>
+
+
+        </div>
+        
+        
+        
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/gg601425(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027msdnlib_webdev\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"6a6f070e-34cb-42b0-9d81-3bb7857011f6\";\n/**/" },
+	{ txt: "//\n\n            window.appInsightsId = \u002760854590-027a-4ae4-98be-2741a40f355f\u0027;\n            //" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,2:Footer,3:Feedback,0:Topic,4:webtrendsscript,5:omni_rsid_MSDN,0:AppInsightsPerf,6:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Centers/Themes/Base/Content:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Epx/Shared/Content:3,/Areas/Global/Content/Webtrends/resources:4,/Areas/Global/Content/Omniture/resources/MSDN:5,/Areas/Epx/Themes/Base/Content:6\u0026amp;hashKey=EED176C19311527742EAE9817FAEB030" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=Msdn\u0026loc=en-us\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=Search MSDN" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:PrintExportButton,1:Toc,1:NavigationResize,2:FeedbackCounter;/Areas/Library/Themes/Base/Content:0,/Areas/Library/Content:1,/Areas/Epx/Shared/Content:2\u0026amp;hashKey=66872A62A3ED5011793DE8DC80B4968C" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:CommunityContent,0:LibraryMemberFilter,1:Toc_Fixed,1:CodeSnippet,1:TopicNotInScope,1:CollapsibleArea,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1\u0026amp;hashKey=9A6478EAA9D0035A700B22D5E4C6E583" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+<script src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/broker-config.js"></script><div id="_WEDCSInsertedData" style="display: none;"><iframe id="_msnFrame" src="./Drawing the background and vehicle for a game using HTML5 canvas and JavaScript (Windows)_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

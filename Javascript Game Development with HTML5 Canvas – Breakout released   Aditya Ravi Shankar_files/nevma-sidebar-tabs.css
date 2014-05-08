@@ -1,0 +1,14 @@
+#tabbed-sidebar-widgets {}
+
+	#tabbed-sidebar-widgets .widgettitle { padding: 0 3px; font-size: 15px; font-weight: normal; line-height: 1.7; border-bottom: 1px solid black;}
+	
+		#tabbed-sidebar-widgets .widgettitle a { display: inline-block; padding: 0 10px; text-align: center;}
+		#tabbed-sidebar-widgets .widgettitle a.first {}
+		#tabbed-sidebar-widgets .widgettitle a.last {}
+		#tabbed-sidebar-widgets .widgettitle a.selected { background: black; color: #FFF;}
+		
+	#tabbed-sidebar-widgets ul { margin: 0; padding: 0; list-style: none;}
+	
+		#tabbed-sidebar-widgets .tab-container ul li { padding: 3px 10px; min-height: 10px; line-height: 1.3;}
+		
+			#tabbed-sidebar-widgets .tab-container a {}

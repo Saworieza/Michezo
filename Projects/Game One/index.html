@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CH8EX1: Filled Screen With Some Text</title>
+<script type="text/javascript">
+    window.addEventListener('load', eventWindowLoaded, false);
+    function eventWindowLoaded() {
+    canvasApp();
+    }
+    function canvasApp(){
+    var theCanvas = document.getElementById("canvas");
+    if (!theCanvas || !theCanvas.getContext) {
+    return;
+    }
+    var context = theCanvas.getContext("2d");
+    if (!context) {
+    return;
+    }
+    drawScreen();
+    function drawScreen() {
+    context.fillStyle = '#ffaaaa';
+    context.fillRect(0, 0, 200, 200);
+    context.fillStyle = '#000000';
+    context.font = '20px _sans';
+    context.textBaseline = 'top';
+    context.fillText ("Canvas! youth in revolt book", 0, 0);
+    }
+    }
+</script>
+</head>
+<body>
+<div style="position: absolute; top: 50px; left: 50px;">
+<canvas id="canvas" width="200" height="200">
+Your browser does not support HTML5 Canvas.
+</canvas>
+</div>
+</body>
+</html>

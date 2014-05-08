@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/ -->
+<html lang="en" dir="ltr" itemscope="" itemtype="http://schema.org/Article" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths adownload webaudio blobconstructor no-battery contenteditable cors csscalc mediaqueries no-regions cssfilters classlist details datalistelem track filesystem filereader fullscreen no-gamepads getusermedia xhr2 performance raf quotamanagement no-stylescoped no-webintents websocketsbinary todataurljpeg todataurlwebp webp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta property="twitter:account_id" content="1593210261">
+  <!-- Copyright (c) 2012 Google Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   *     http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *
+   * Author: Arthur Evans
+   *
+   * 
+   *
+  -->
+  <title>Chrome DevTools Revolutions 2013 - HTML5 Rocks</title>
+  <meta name="description" content="A host of new DevTools features were introduced at Google I/O 2013. Now they&#39;re live in Chrome stable and ready for use!">
+  <meta name="keywords" content="html5,html 5,html5 demos,html5 examples,javascript,css3,notifications,geolocation,web workers,apppcache,file api,filereader,indexeddb,offline,audio,video,drag and drop,chrome,sse,mobile">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <link rel="shortcut icon" href="http://www.html5rocks.com/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="HTML5 Rocks RSS" href="http://feeds.feedburner.com/html5rocks">
+
+  <meta itemprop="name" content="Chrome DevTools Revolutions 2013 - HTML5 Rocks">
+  <meta itemprop="description" content="A host of new DevTools features were introduced at Google I/O 2013. Now they&#39;re live in Chrome stable and ready for use!">
+  
+<!--<meta itemprop="image" content="images/your_social_sharing_img.png">-->
+
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ChromiumDev">
+  <meta name="twitter:creator" content="@devdocdude">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Chrome DevTools Revolutions 2013 - HTML5 Rocks">
+  <meta property="og:url" content="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/">
+  <meta property="og:description" content="A host of new DevTools features were introduced at Google I/O 2013. Now they&#39;re live in Chrome stable and ready for use!">
+  <meta property="og:image" content="http://www.html5rocks.com/static/images/profiles/arthurevans.png">
+  <meta property="og:site_name" content="HTML5 Rocks - A resource for open web HTML5 developers">
+  
+
+  
+  
+  <link rel="author" href="https://www.google.com/profiles/110826149386850855763">
+  
+  <link rel="publisher" href="https://plus.google.com/+GoogleChromeDevelopers">
+
+  
+
+  
+    
+    <link rel="stylesheet" media="all" href="http://www.html5rocks.com/static/css/v2-combined.min.css?20131111">
+    
+
+    
+  
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,800|Source+Code+Pro" rel="stylesheet">
+
+  <link rel="apple-touch-icon" href="http://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png">
+  <link rel="apple-touch-icon-precomposed" href="http://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png">
+
+  <script type="text/javascript" src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/count.js" async=""></script><script type="text/javascript" async="" src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/ga.js"></script><script src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/modernizr.custom.82437.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+  <![endif]-->
+
+  
+
+<script async="" src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/count-data.js"></script></head>
+<body data-href="tutorials-developertools-revolutions2013" onload="" class="article tutorial">
+
+  <header class="main" id="siteheader">
+    <h1 id="title">
+      <a href="http://www.html5rocks.com/en/" title="HTML5 Rocks">HTML5 Rocks</a>
+    </h1>
+    <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#sitenav" id="navtoggle">Show navigation</a>
+
+    
+    <a id="toctoggle" href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc">Table of Contents</a>
+    
+
+    <nav id="sitenav">
+      <ul>
+        
+        <li id="home_menu"><a href="http://www.html5rocks.com/en/" class="home">Home</a></li>
+        
+        <li id="tutorials_menu"><a href="http://www.html5rocks.com/en/tutorials/?page=1" class="tutorials">Tutorials</a></li>
+        <li id="updates_menu"><a href="http://www.html5rocks.com/en/updates/" class="updates">Updates</a></li>
+        <li id="contrib_menu"><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md" target="_blank">Contribute</a></li>
+        <li id="slides_menu"><a href="http://www.html5rocks.com/en/slides" class="slides">Slides</a></li>
+        <li id="resources_menu"><a href="http://www.html5rocks.com/en/resources" class="resources">Resources</a></li>
+      </ul>
+    </nav>
+
+    
+    <nav class="toc" id="toc">
+      <h1>Table of Contents</h1>
+
+      <ul><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-introduction">Introduction</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-workspaces">Workspaces</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-sass-debugging">Sass/CSS Source Map debugging</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-remote-debugging">Easier remote debugging on Chrome for Android</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-flame-chart">Flame chart visualization for JavaScript profiles</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-key-performance">Five key performance measurement features</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-canvas-profiling">Canvas profiling (experimental)</a></li></ul>
+
+      <h1 class="visible-title">Localizations:</h1>
+      <ul>
+        
+          <li><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md">Contribute one</a></li>
+        
+      </ul>
+    </nav>
+    
+  </header>
+
+  <div class="body-content">
+    
+
+  <section class="title">
+
+    
+
+    <section class="title-text container">
+      
+      <h1>Chrome DevTools Revolutions 2013</h1>
+      
+      
+
+      <a href="http://www.html5rocks.com/en/" class="watermark">HTML5 Rocks</a>
+    </section>
+  </section>
+
+  <article class="content-wrapper">
+
+    <section class="container">
+
+      
+
+      <div class="article-meta" id="article-meta">
+        <nav class="toc">
+          <h1>Table of Contents</h1>
+
+          <ul><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-introduction">Introduction</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-workspaces">Workspaces</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-sass-debugging">Sass/CSS Source Map debugging</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-remote-debugging">Easier remote debugging on Chrome for Android</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-flame-chart">Flame chart visualization for JavaScript profiles</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-key-performance">Five key performance measurement features</a></li><li><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-canvas-profiling">Canvas profiling (experimental)</a></li></ul>
+        </nav>
+
+        <aside class="localizations">
+          <h1>Localizations</h1>
+          <ul>
+            
+              <li><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md">Contribute one</a></li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+
+      <div class="content" id="article-content">
+
+        <section class="byline">
+
+          <div class="byline-content">
+            
+            <section class="author-images">
+              <a href="http://www.html5rocks.com/profiles/#arthurevans">
+                <img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/arthurevans.png" itemprop="photo" alt="Arthur Evans" title="Arthur Evans">
+              </a>
+
+              
+                <a href="http://www.html5rocks.com/profiles/#timstatler">
+                  <img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/timstatler.png" itemprop="photo" alt="Tim Statler" title="Tim Statler">
+                </a>
+              
+            </section>
+
+            <section class="meta">
+              <div class="authors">
+                <strong>By</strong> <a href="http://www.html5rocks.com/profiles/#arthurevans">Arthur Evans</a>
+                
+                  and <a href="http://www.html5rocks.com/profiles/#timstatler">Tim Statler</a>
+                
+              </div>
+
+              
+
+              <div class="date">
+                <time pubdate=""><strong>Published:</strong> July 12th, 2013</time>
+                
+                <time class="updated"><strong>Updated:</strong> October 29th, 2013</time>
+                <span><strong>Comments:</strong> <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#disqus_thread" class="load-comments" data-disqus-identifier="http://www.html5rocks.com/tutorials/developertools/revolutions2013/">36</a></span>
+              </div>
+
+              <div id="notcompatible" class="hidden">
+                Your browser may not support the functionality in this article.
+              </div>
+            </section>
+            <div class="clear"></div>
+
+            
+          </div>
+        </section>
+
+        
+
+<h2 id="toc-introduction">Introduction</h2>
+
+
+<p>As the complexity and functionality of web applications has grown, so has Chrome DevTools. In this recap of Paul Irish's Google I/O 2013 talk <a href="https://www.youtube.com/watch?v=x6qe_kVaBpg">Chrome DevTools Revolutions 2013</a>, you get a look at the latest features that are revolutionizing how you build and test web applications. </p>
+
+<iframe width="560" height="315" src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/x6qe_kVaBpg.html" frameborder="0" allowfullscreen=""></iframe>
+
+<p>If you missed Paul's talk, you can catch it above (go ahead, we'll wait) or you can cut straight to the feature roundup:</p>
+
+<ul>
+<li><p><a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-workspaces">Workspaces</a> lets you use DevTools as your source code editor.</p></li>
+<li><p>If you use Sass, you'll love the ability to <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-sass-debugging">live-edit Sass</a> (.scss) files within DevTools and see your changes immediately reflected on the page. </p></li>
+<li><p>Remotely debugging pages on Chrome for Android has been possible for a while, but the <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-remote-debugging">ADB extension</a> makes connecting to Android devices simpler. <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-reverse-port-forwarding">Reverse port forwarding</a> lets you easily connect to localhost on your development machine from your device.</p></li>
+<li><p>Performance is always a concern in web applications, and DevTools has a number of new features to help you track down bottlenecks, including the new <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-flame-chart">Flame Chart</a> visualization for CPU profiling and <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-key-performance">several new tools</a> for debugging performance problems related to rendering and memory use.</p></li>
+</ul>
+
+<p>These features are live in Chrome 28, now available in the stable update channel.</p>
+
+
+<h2 id="toc-workspaces">Workspaces</h2>
+
+<p>Workspaces let you map resources served from a local web server to files on disk, so you can edit any type of source file within the Sources panel and have those changes persist to disk. Similarly, changes you make in your external editor immediately appear in the Sources panel. </p>
+
+<p>The screenshot below shows an example of workspaces in action. The Calendar site has been loaded over localhost, while the Sources panel shows the local file system view of the site's root folder. Edits you make to the files in this folder are persisted to disk. In the screenshot below, some unsaved changes have been made to Calendar.css, so an asterisk is placed next to the file name.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/workspace-sources-panel.png" alt="Sources panel" width="552" height="327"></figure>
+
+<p>Pressing Control+S or Command+S persists the changes to disk. </p>
+
+<p>Similarly, changes you make to an element's styles in the Elements panel are reflected in both the Sources panel and your external editor. Note that:</p>
+
+<ul>
+<li><p>DOM changes in the Elements panel are <em>not</em> persisted. Only style changes on the Elements panel are persisted.</p></li>
+<li><p>Only styles defined in an external CSS file can be changed. Changes to element.style or to inline styles are not persisted back to disk. If you have inline styles, they can be changed on the Sources panel.</p></li>
+<li><p>Style changes on the Elements panel are persisted immediately; you don’t need to press Control+S or Command+S.</p></li>
+</ul>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/workspace-elements-panel.png" alt="Elements panel" width="620" height="225"></figure>
+
+<h3 id="toc-adding-workspace">Adding a workspace folder</h3>
+
+<p>There are two parts to using workspaces: making a local folder's contents available to DevTools, and <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-mapping-folder">mapping that folder to a URL</a>. </p>
+
+<p>To add a new workspace folder:</p>
+
+<ol>
+<li><p>In DevTools, click <b>Settings</b> <img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/settings-icon.png" alt="Settings icon" width="17" height="17"> to open DevTools Settings.</p></li>
+<li><p>Click <b>Workspace</b>.</p></li>
+<li><p>Click <b>Add Folder</b>.</p></li>
+<li><p>Browse to the folder containing your project's source files and click <b>Select</b>.</p></li>
+<li><p>When prompted, click <b>Allow</b> to allow DevTools full access to the folder.</p></li>
+</ol>
+
+<p>The Sources panel displays the new workspace folder along with the sources loaded over localhost. You can now live-edit files within your workspace folder, and those changes will persist to disk.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/added-workspace-folder.png" alt="Sources panel showing both localhost resources and workspace files" width="491" height="198"></figure>
+
+<h3 id="toc-mapping-folder">Mapping a folder to a URL</h3>
+
+<p>Once you've added a workspace folder you can map it to a URL. Whenever Chrome loads the specified URL, the Sources panel displays the workspace folder contents in place of the network folder contents.</p>
+
+<p>To map a workspace folder to a URL:</p>
+
+<ol>
+<li><p>In the Sources panel, right-click or Control+click on a file in a workspace folder.</p></li>
+<li><p>Select <b>Map to Network Resource</b>.</p>
+<p><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/map-to-resource-menu.png" alt="Context menu showing Map to Network Resource option" width="415" height="182"></p></li>
+<li><p>Select the corresponding network resource from the currently loaded page.</p>
+<p><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/select-resource.png" alt="Resource selection dialog" width="547" height="280"></p></li>
+<li><p>Reload the page in Chrome.</p></li>
+</ol>
+
+<p>The Sources panel should now show just the contents of your site's local workspace folder, not the localhost sources, as shown below. </p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/mapped-workspace-folder.png" alt="image alt text" width="462" height="189"></figure>
+
+<p class="notice"><strong>Note: </strong>If you still see the localhost sources, refresh the page in Chrome.</p>
+
+<p>There are two other ways to link a network folder to a workspace folder:</p>
+
+<ul>
+<li><p>Right-click (or Control+click) on a network resource and select <b>Map to File System Resource</b>.</p></li>
+<li><p>Add mappings manually in the Workspace tab of the DevTools Settings dialog.</p></li>
+</ul>
+
+
+<h2 id="toc-sass-debugging">Sass/CSS Source Map debugging</h2>
+
+<p>Sass (CSS Source Map) debugging lets you live-edit Sass (.scss) files in the Sources panel, and view the results without having to leave DevTools or refresh the page. When you inspect an element whose styles are provided by a Sass-generated CSS file, the Elements panel displays a link to the .scss file, not the generated .css file.</p>
+
+<figure> <img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/sass-debugging.png" alt="Elements panel showing .scss stylesheet"></figure>
+
+<p>Clicking the link opens the (editable) SCSS file in the Sources panel. You can make any changes you want to this file. </p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/sass-sources.png" alt="Sources panel showing .scss file"></figure>
+
+<p>When you save changes to an SCSS file (in DevTools or elsewhere), the Sass compiler re-generates the CSS files. Then DevTools reloads the newly generated CSS file.</p>
+
+<p class="notice"><strong>Note:</strong> Technically this feature should work with <em>any</em> CSS preprocessor that supports source maps. For more information, read <a href="https://developers.google.com/chrome-developer-tools/docs/css-preprocessors">working with CSS preprocessors</a> in the DevTools documentation.</p>
+
+<h3 id="toc-using-sass-debugging">Using Sass debugging</h3>
+
+<p>To use Sass debugging in Chrome you need to have the <a href="http://sass-lang.com/download.html">pre-release version of the Sass compiler</a>, which is the only version that currently supports source map generation.</p>
+
+<pre class="prettyprint"><span class="pln">gem install sass </span><span class="pun">-</span><span class="pln">v </span><span class="str">'&gt;=3.3.0alpha'</span><span class="pln"> </span><span class="pun">--</span><span class="pln">pre</span></pre>
+
+<p>You also need to enable the Sass debugging feature in DevTools experiments:</p>
+
+<ol>
+<li><p>Open <b>about:flags</b> in Chrome.</p></li>
+<li><p>Turn on <b>Enable Developer Tools experiments</b>.</p></li>
+<li><p>Restart Chrome.</p></li>
+<li><p>Open DevTools Settings and click <b>Experiments</b>.</p></li>
+<li><p>Turn on <b>Support for Sass</b> (or <b>Sass stylesheet debugging</b>, depending on the browser version you're using).</p></li>
+</ol>
+
+<p>Once Sass is installed, start the Sass compiler to watch for changes to your Sass source files and create source map files for each generated CSS file, for example: </p>
+
+<pre class="prettyprint"><span class="pln">sass </span><span class="pun">--</span><span class="pln">watch </span><b><span class="pun">--</span><span class="pln">sourcemap</span></b><span class="pln"> sass</span><span class="pun">/</span><span class="pln">styles</span><span class="pun">.</span><span class="pln">scss</span><span class="pun">:</span><span class="pln">styles</span><span class="pun">.</span><span class="pln">css</span></pre>
+
+<p>If you are using Compass, note that Compass doesn’t yet support the pre-release version of Sass, so you can’t use Sass debugging with Compass.</p>
+
+<h3 id="toc-how-sass-debugging-works">How it works</h3>
+
+<p>For each SCSS source file it processes, the Sass compiler generates a <a href="http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/">source map</a> file (.map file) in addition to the compiled CSS. The source map file is a JSON file that defines the mappings between the .scss file and the .css files. Each CSS file contains an annotation that specifies the URL of its source map file, embedded in a special comment:</p>
+
+<pre class="prettyprint"><span class="com">/*# sourceMappingURL=&lt;url&gt; */</span></pre>
+
+<p>For instance, given the following SCSS file:</p>
+
+<pre class="prettyprint lang-css"><span class="com">&lt;!--</span><span class="pln"> styles</span><span class="pun">.</span><span class="pln">scss </span><span class="com">--&gt;</span><span class="pln">
+</span><span class="pun">$</span><span class="kwd">textSize</span><span class="pun">:</span><span class="pln"> </span><span class="lit">26px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">$</span><span class="kwd">fontColor</span><span class="pun">:</span><span class="pln"> red</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">$</span><span class="kwd">bgColor</span><span class="pun">:</span><span class="pln"> whitesmoke</span><span class="pun">;</span><span class="pln">
+
+h2 </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">font-size</span><span class="pun">:</span><span class="pln"> </span><span class="pun">$</span><span class="pln">textSize</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">color</span><span class="pun">:</span><span class="pln"> </span><span class="pun">$</span><span class="pln">fontColor</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">background</span><span class="pun">:</span><span class="pln"> </span><span class="pun">$</span><span class="pln">bgColor</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>Sass generates a CSS file like this, with the sourceMappingURL annotation:</p>
+
+<pre class="prettyprint lang-css"><span class="com">&lt;!--</span><span class="pln"> styles</span><span class="pun">.</span><span class="pln">css </span><span class="com">--&gt;</span><span class="pln">
+h2 </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">font-size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">24px</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">color</span><span class="pun">:</span><span class="pln"> orange</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">background-color</span><span class="pun">:</span><span class="pln"> darkblue</span><span class="pun">;</span><span class="pln"> 
+</span><span class="pun">}</span><span class="pln">
+</span><span class="com">/*# sourceMappingURL=styles.css.map */</span></pre>
+
+<p>Below is an example source map file:</p>
+
+<pre class="prettyprint"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"version"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"3"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"mappings"</span><span class="pun">:</span><span class="str">"AAKA,EAAG;EACC,SAAS,EANF,IAAI;EAOX,KAAK..."</span><span class="pln">
+  </span><span class="str">"sources"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="str">"sass/styles.scss"</span><span class="pun">],</span><span class="pln">
+  </span><span class="str">"file"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"styles.css"</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<h2 id="toc-remote-debugging">Easier remote debugging on Chrome for Android</h2>
+
+<p>A couple of new features in DevTools make remote debugging on Chrome for Android easier to setup: the <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-using-adb-extension">ADB extension</a> and <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-reverse-port-forwarding">reverse port forwarding</a>. </p>
+
+<p>The ADB Chrome extension simplifies the process of setting up remote debugging. It provides the following benefits:</p>
+
+<ul>
+<li><p>Bundles Android Debug Bridge (ADB) so you don't have to install it.</p></li>
+<li><p>No command line interaction required.</p></li>
+<li><p>UI for easily starting and stopping the ADB daemon, and viewing connected devices.</p></li>
+</ul>
+
+<p>Reverse port forwarding makes it easy to connect Chrome on Android to a web server running on your localhost, something that some network environments make difficult without some DNS tricks.</p>
+
+<h3 id="toc-using-adb-extension">Using the ADB extension</h3>
+
+<p>First, install the <a href="https://chrome.google.com/webstore/detail/adb/dpngiggdglpdnjdoaefidgiigpemgage">ADB Chrome extension</a> from the Chrome Web Store. Click <b>Add to Chrome </b> to install the extension.</p>
+
+<p class="notice">Installing extensions from the Chrome Web Store isn't supported on Windows 8. If you have any problems installing from the Chrome Web Store, see <a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging">Remote Debugging on Android</a> for alternate installation instructions.</p>
+
+<p>Once installed, a gray Android menu icon appears in Chrome. To start ADB, click the icon and then click <b>Start ADB</b>.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/adb-menu.png" alt="ADB extension menu"></figure>
+
+<p>Once ADB has started, the menu icon turns green and displays the number of currently connected devices, if any.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/adb-menu-active.png" alt="ADB extension menu showing connected devices"></figure>
+
+<p>Click <b>View Devices</b> to open the <b>about:inspect</b> page that displays each connected device and its tabs. To inspect a tab in DevTools, click the "inspect" link next to its URL.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/about-inspect.png" alt="about:inspect page showing links for device tabs"></figure>
+
+<p>If you don't see any connected devices, check that your device is connected to USB, and that <b>USB debugging</b> is enabled in the Chrome for Android settings. For more detailed instructions and troubleshooting steps, see <a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging#enable-usb-debugging">Remote Debugging on Android</a>.</p>
+
+<h3 id="toc-reverse-port-forwarding">Reverse port forwarding (experimental)</h3>
+
+<p>Commonly you have a web server running on your local development machine, and you want to connect to that site from your device. If the development machine and the device are on the same network, this is straightforward. But in some cases, like on restricted corporate networks, this may not be possible without some clever DNS tricks. A new feature in Chrome for Android called <em>reverse port forwarding</em> makes this simple to do. It works by creating a listening TCP port on your device that forwards traffic over USB to a particular TCP port on your development machine. </p>
+
+<p>To use this feature you will need:</p>
+
+<ul>
+<li><p>Chrome 28 or later installed on your development machine</p></li>
+<li><p>Chrome for Android Beta installed on your device</p></li>
+<li><p><a href="http://developer.android.com/tools/help/adb.html">Android Debug Bridge</a> (ADB Chrome extension or full Android SDK) installed on your development machine</p></li>
+</ul>
+
+<p>To use reverse port forwarding, you need to have your device connected for remote debugging, 
+as described in <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#toc-using-adb-extension">Using the ADB extension</a>. Then you need to enable 
+reverse port forwarding and add a port forwarding rule for your application.</p>
+
+
+<p>First, enable reverse port forwarding:</p>
+
+<ol>
+<li><p>Open Chrome on your development machine.</p></li>
+<li><p>In <b>about:flags</b>, turn on <b>Enable Developer Tools experiments</b> and restart Chrome.</p></li>
+<li><p>Open <b>about:inspect</b>. You should see your mobile device and a list of its open tabs. </p></li>
+<li><p>Click the "inspect" link next to any of the sites listed.</p></li>
+<li><p>In the DevTools window that opens, open the Settings panel.</p></li>
+<li><p>Under Experiments, turn on <b>Enable reverse port forwarding</b>. </p></li>
+<li><p>Close the DevTools window and return to <b>about:inspect</b>. </p></li>
+</ol>
+
+
+<p>Then add a port forwarding rule:</p>
+<ol>
+<li><p>Click the "inspect" link again to open DevTools, and open DevTools Settings again.</p></li>
+<li><p>Click the <b>Port Forwarding</b> tab.</p></li>
+<li><p>In the <b>Device port</b> field, enter the port number Chrome should connect to on your Android device (defaults to 8080).</p></li>
+<li><p>In the <b>Target</b> field, append the port number where your web application is running on your development machine.</p>
+
+<p><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/port-forwarding.png" alt="Port forwarding tab in DevTools Settings"></p>
+</li>
+<li>In Chrome for Android, open <b>localhost:&lt;device-port-number&gt;</b>, where &lt;device-port-number&gt; is the value you entered in the <b>Device port</b>field (default is 8080).</li>
+</ol>
+
+<p>You should see the content being served by your development machine.</p>
+
+<h2 id="toc-flame-chart">Flame chart visualization for JavaScript profiles</h2>
+
+<p>The new Flame Chart view provides a visual representation of JavaScript processing over time, similar to those found in the Timeline and Network panels.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/flame-chart-1.png" alt="Flame chart"></figure>
+
+<p>The horizontal axis is time and vertical axis is the call stack. Across the top of the panel an overview that shows the entire recording, and you can "zoom in" on a region of the overview by selecting it with your mouse, as shown below. The details view timescale shrinks accordingly.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/flame-chart-2.png" alt="Flame chart zoomed in"></figure>
+
+<p>In the details view a call stack is represented as a stack of function "blocks". A block that sits atop another was called by the lower function block. Hovering over a given block displays its function name and timing data:</p>
+
+<ul>
+<li><p><strong>Name</strong> — The name of the function.</p></li>
+<li><p><strong>Self time</strong> — How long it took to complete the current invocation of the function, including only the statements in the function itself, not including any functions that it called.</p></li>
+<li><p><strong>Total time</strong> — The time it took to complete the current invocation of this function and any functions that it called. </p></li>
+<li><p><strong>Aggregated self time</strong> — Aggregate time for all invocations of the function across the recording, <em>not</em> including functions called by this function.</p></li>
+<li><p><strong>Aggregated total time</strong> — Aggregate total time for all invocations of the function, including functions called by this function.</p></li>
+</ul>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/flame-chart-3.png" alt="Flame chart showing timing data"></figure>
+
+<p>Clicking a function block opens its containing JavaScript file in the Sources panel, at the line where the function is defined.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/flame-chart-sources.png" alt="Function definition in Sources panel"></figure>
+
+<p>To use the flame chart:</p>
+
+<ol>
+<li><p>In DevTools, click the <strong>Profiles</strong> tab.</p></li>
+<li><p>Choose <b>Record JavaScript CPU profile</b> and click <b>Start</b>.</p></li>
+<li><p>When you are done collecting data, click <b>Stop</b>.</p></li>
+<li><p>In the profile view, select the <b>Flame Chart</b> visualization.</p>
+<p><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/flame-chart-menu.png" alt="Visualization menu in profile view"></p></li>
+</ol>
+
+<h2 id="toc-key-performance">Five key performance measurement features</h2>
+
+<p>Rounding out this survey of revolutionary advances in DevTools are several new feature for investigating performance issues:</p>
+
+<ul>
+<li><p>Continuous painting mode</p></li>
+<li><p>Showing Paint rectangles and layer borders</p></li>
+<li><p>FPS meter</p></li>
+<li><p>Finding forced synchronous layouts (layout thrashing)</p></li>
+<li><p>Object allocation tracking</p></li>
+</ul>
+
+<h3 id="toc-continuous-paint">Continuous painting mode</h3>
+
+<p>Continuous painting mode is an option in DevTools Settings 
+(<strong>Rendering</strong> &gt; <strong>Enable continuous page repainting</strong>) that helps you identify the rendering cost of individual elements or CSS styles. </p>
+
+
+<p>Normally, Chrome only paints to the screen in response to a layout or style change, and only those regions of the screen that need updating. When you enable continuous page repainting, the entire screen is being constantly repainted. A heads-up display shows the time it's taking Chrome to paint the page, as well the range of times, and a graph showing the distribution of recent paint times. The horizontal line across the histogram indicates the 16.6 ms mark.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/paint-times.png" alt="Paint timing heads-up display"></figure>
+
+<p>The benefit to using this is that you can walk the DOM tree in the Elements panel and hide individual elements (press the <strong>H</strong> key to hide the currently selected element), or disable an element's CSS styles. You can see how much time one element or style adds to the page render "weight", if any, by noticing changes to the page paint time. If hiding a single element brings the paint times down significantly, you know to focus on the styling or construction of that element.</p>
+
+<p>To enable continuous paining mode:</p>
+
+<ol>
+<li>Open DevTools Settings.</li>
+<li>On the <b>General</b> tab, under <b>Rendering</b>, turn on <b>Enable continuous page repainting</b>.
+</li></ol>
+<p class="notice"><strong>Note:</strong> If you don't see this option in Settings, open <b>about:flags</b>, turn on <b>GPU compositing on all pages</b>, and restart Chrome.</p>
+
+<p>For more information, see <a href="http://updates.html5rocks.com/2013/02/Profiling-Long-Paint-Times-with-DevTools-Continuous-Painting-Mode">Profiling Long Paint Times with DevTools' Continuous Painting Mode</a>. </p>
+
+<h3 id="toc-paint-rectangles">Showing paint rectangles and layer borders</h3>
+
+<p>Another option in DevTools is to show what rectangular regions of the display are being painted to. (Settings &gt; Rendering &gt; Show paint rectangles). For example, in the screenshot below a paint rectangle is being drawn over the region where a CSS hover effect was being applied to the purple graphic. This is good, since it's relatively small part of the screen.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/paint-rect-1.png" alt="Web site showing paint rectangle"></figure>
+
+<p>You want to avoid design and development practices that cause the entire display to be repainted. For example, in the following screenshot the user is scrolling the page. One paint rectangle surrounds the scroll bar, and another surrounds the entire rest of the page. In this case the culprit is the background image on the body element. The image position is set to fixed in CSS, which requires Chrome to repaint the entire page on each scroll.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/paint-rect-2.png" alt="Web site showing full-screen repaint"></figure>
+
+<h3 id="toc-fps-meter">FPS meter</h3>
+
+<p>The <strong>FPS meter</strong> displays the page's current frame rate, the minimum and maximum frame rate, a bar graph showing frame rate over time, and a histogram that shows frame rate variability.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/fps-meter.png" alt="FPS meter"></figure>
+
+<p>To show the FPS meter:</p>
+
+<ol>
+<li><p>Open DevTools Settings.</p></li>
+<li><p>Click <strong>General</strong>.</p></li>
+<li><p>Under <strong>Rendering</strong>, turn on <strong>Force accelerated compositing</strong> and <strong>Show FPS meter</strong>.</p></li>
+</ol>
+
+<p>You can force the FPS meter to always appear by opening <strong>about:flags</strong>, turning on <strong>FPS counter</strong>, and restarting Chrome.</p>
+
+<h3 id="toc-sync-layout">Finding forced synchronous layouts (layout thrashing)</h3>
+
+<p>To maximize rendering performance, Chrome normally batches layout changes requested by your application and schedules a layout pass to asynchronously calculate and render the requested changes. However, if an application asks for the value of a layout-dependent property (such offsetHeight or offsetWidth), Chrome is forced to immediately and synchronously perform a page layout. These so-called <em>forced synchronous layouts</em> can significantly reduce rendering performance, especially when performed repeatedly on large DOM trees. This scenario has also been called "layout thrashing".</p>
+
+<p>A Timeline recording alerts you when it detects a forced synchronous layout with a yellow warning icon (<img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/warning-icon.png" alt="Warning icon">) next to the corresponding Timeline record. Hovering over one of these records displays stack traces for the code that invalidated the layout, and the code that forced the layout.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/forced-sync-layout-popup.png" alt="Forced synchronous layout pop-up in Timeline view"></figure>
+
+<p>This pop-up also shows the number of nodes that needed layout, the size of the re-layout tree, the layout scope, and the layout root.</p>
+
+<p>See <a href="https://developers.google.com/chrome-developer-tools/docs/demos/too-much-layout/">Timeline demo: Diagnosing forced synchronous layouts</a> for more information.</p>
+
+<h3 id="toc-object-allocation">Object allocation tracking</h3>
+
+<p>Object allocation tracking is a new type of memory profile that shows allocation over time. When you start allocation tracking, DevTools takes heap snapshots continuously over time. The heap allocation profile shows where objects are being created and identifies the retaining path.</p>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/allocation-tracker.png" alt="Heap allocation profile view"></figure>
+
+<p>To track object allocations:</p>
+
+<ol>
+<li><p>In DevTools, click the <b>Profiles</b> tab.</p></li>
+<li><p>Choose <b>Record heap allocations</b> and click <b>Start</b>.</p></li>
+<li><p>When you are done collecting data, click <b>Stop recording heap profile</b> (the red circle in the lower left corner of the profiling pane).</p></li>
+</ol>
+
+<h2 id="toc-canvas-profiling">Canvas profiling (experimental)</h2>
+
+<p>Finally, here's a completely experimental feature to explore. Canvas profiling lets you record and playback WebGL calls made on a canvas element. You can step through individual WebGL calls or call groups and see the rendered results. You also see the time it took to replay those particular calls. </p>
+
+<p>To use canvas profiling:</p>
+
+<ol>
+<li><p>Turn on the <b>Canvas inspection</b> feature on the <b>Experiments</b> tab of DevTools settings. (If you don't see this tab, open <b>about:flags</b>, turn on <b>Enable Developer Tools experiments</b> and restart Chrome.)</p></li>
+<li><p>Click the <b>Profiles</b> tab.</p></li>
+<li><p>Select <b>Capture canvas frame</b> and click <b>Take snapshot</b>.</p></li>
+<li><p>You can now explore the calls used to create the canvas frame.</p></li>
+</ol>
+
+<figure><img src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/canvas-profile.png" alt="Canvas profile"></figure>
+
+      </div>
+    </section>
+  </article>
+
+  
+  <section class="disqus pattern-bg-lighter">
+
+    <div id="disqus" class="container">
+
+      <h2>Comments</h2>
+
+      <div id="disqus_thread">
+
+        <a href="http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/#disqus_thread" class="load-comments" data-disqus-identifier="http://www.html5rocks.com/tutorials/developertools/revolutions2013/">36</a>
+
+      </div>
+    </div>
+
+    <noscript>
+      &lt;p class="center"&gt;
+        &lt;strong&gt;
+          &lt;a href="http://disqus.com/?ref_noscript"&gt;Please enable JavaScript to view the comments powered by Disqus.&lt;/a&gt;
+        &lt;/strong&gt;
+      &lt;/p&gt;
+    </noscript>
+
+    <script>
+
+      var disqus_shortname = 'html5rocks';
+      var disqus_identifier = 'http://www.html5rocks.com/tutorials/developertools/revolutions2013/';
+      var disqus_url = 'http://www.html5rocks.com/tutorials/developertools/revolutions2013/';
+      var disqus_developer = 0;
+
+      var disqus_config = function () {
+        var funky_language_code_mapping = {
+          'de': 'de_inf',
+          'es': 'es_ES',
+          'pt': 'pt_EU',
+          'sr': 'sr_CYRL',
+          'sv': 'sv_SE',
+          'zh': 'zh_HANT'
+        };
+        this.language = funky_language_code_mapping['en'] ||
+                        'en';
+
+        this.callbacks.onReady = [ function () {
+                                      try {
+                                        _gaq.push(['_trackEvent', 'View comments']);
+                                      } catch(err){}
+                                   } ];
+        this.callbacks.onNewComment = [ function (comment) {
+                                          try {
+                                            _gaq.push(['_trackEvent', 'Commented']);
+                                          } catch(err){}
+                                        } ];
+      };
+
+      window.addEventListener('load', function(e) {
+
+        var c = document.createElement('script');
+        c.type = 'text/javascript';
+        c.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        c.async = true;
+
+        var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+        sp.insertBefore(c, s);
+
+        if (window.location.hash === '#disqus_thread')
+          loadComments();
+
+      }, false);
+
+      var disqus_loaded = false;
+      function loadComments() {
+
+        if (disqus_loaded)
+          return;
+
+        disqus_loaded = true;
+
+        _gaq.push(['_trackEvent', 'Interactions', 'Comments', 'Comments Loaded']);
+
+        var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+
+        var disqusContainer = document.getElementById('disqus');
+        disqusContainer.classList.add('active');
+
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        sp.insertBefore(dsq, s);
+      }
+
+      function outgoing(url) {
+        try {
+          _gaq.push(['_trackEvent', 'Outbound Links' , url]);
+        } catch(err){}
+      }
+      // Open external links (also that don't have a target defined) in a new tab.
+      var externLinks = document.querySelectorAll('article.tutorial a[href^="http"]:not([target])');
+      for(var i = 0, a; a = externLinks[i]; ++i) {
+        a.target = '_blank';
+        a.addEventListener('click', new Function('outgoing(' + '"' + a.href.replace(/.*?:\/\//g, "") + '"' + ');'));
+      }
+
+      var loadCommentsButtons = document.querySelectorAll('.load-comments');
+      for(var l = 0; l < loadCommentsButtons.length; l++)
+        loadCommentsButtons[l].addEventListener('click', loadComments);
+
+    </script>
+  </section>
+  
+
+  <footer>
+    <div class="container">
+
+      
+        <h1>Next steps</h1>
+
+        
+
+        <aside class="panel share">
+          <h2>Share</h2>
+
+            <a href="https://twitter.com/share?url=http://www.html5rocks.com/tutorials/developertools/revolutions2013/&text=Chrome%20DevTools%20Revolutions%202013&lang=en&via=ChromiumDev&related=ChromiumDev" class="twitter" target="_blank">Twitter</a>
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.html5rocks.com/tutorials/developertools/revolutions2013/" class="facebook" target="_blank">Facebook</a>
+
+            <a href="https://plus.google.com/share?url=http://www.html5rocks.com/tutorials/developertools/revolutions2013/" class="gplus" onclick="javascript:window.open(this.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">Google+</a>
+
+        </aside>
+
+        <aside class="panel rss">
+          <h2>Subscribe</h2>
+          <p>Enjoyed this article? Grab the <a href="http://feeds.feedburner.com/html5rocks">RSS feed</a> and stay up-to-date.</p>
+        </aside>
+
+      
+
+      <p class="licensing">
+      
+        Except as otherwise <a href="http://code.google.com/policies.html#restrictions">noted</a>, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+      
+      </p>
+
+    </div>
+  </footer>
+
+  <script>
+    window.isCompatible = function() {
+       
+
+    };
+
+    if (isCompatible() === false) {
+      document.getElementById('notcompatible').className = '';
+    }
+
+    function _prettyPrint() {
+      if (typeof customPrettyPrintLanguage != 'undefined') {
+        customPrettyPrintLanguage();
+      }
+      prettyPrint();
+    }
+  </script>
+  <script async="" src="./Chrome DevTools Revolutions 2013 - HTML5 Rocks_files/prettify.min.js" onload="_prettyPrint()"></script>
+
+
+  </div>
+
+  <script>
+  (function() {
+
+    // Kill feedburner and marketing tracking arguments, but let them register
+    // before we do it.
+    setTimeout(function() {
+      if (/^\?utm_/.test(document.location.search) &&
+          window.history.replaceState) {
+        window.history.replaceState(
+            {}, '', document.location.href.replace(/\?utm_.*/, ''));
+      }
+    }, 2000);
+
+    var siteHeader = document.getElementById('siteheader');
+    var navToggle = document.getElementById('navtoggle');
+    var siteNav = document.getElementById('sitenav');
+
+    function toggle(target, forceActive) {
+
+      if (typeof toc !== 'undefined') {
+        // Switch off whichever one is not the
+        // current target
+        if (target === toc)
+          siteNav.classList.remove('active');
+        else
+          toc.classList.remove('active');
+      }
+
+      // Toggle if no force parameter is set
+      if (typeof forceActive === 'undefined') {
+        target.classList.toggle('active');
+      } else {
+        if (forceActive)
+          target.classList.add('active');
+        else
+          target.classList.remove('active');
+      }
+
+      // now find out what the set state ended up being
+      var isActive = target.classList.contains('active');
+
+      if (isActive)
+        siteHeader.classList.add('expanded');
+      else
+        siteHeader.classList.remove('expanded');
+
+    }
+
+    navToggle.addEventListener('click', function(e) {
+      toggle(siteNav);
+      e.preventDefault();
+    });
+
+    
+
+    var tocToggle = document.getElementById('toctoggle');
+    var toc = document.getElementById('toc');
+    var articleMeta = document.getElementById('article-meta');
+    var articleContent = document.getElementById('article-content');
+    var articleMetaHeight = 0;
+    var articleMetaMaxY = 0;
+    var articleMetaMinY = 0;
+    var articleContentPadding = 200;
+
+    var tocLinks = document.querySelectorAll('.toc a');
+    for (var t = 0; t < tocLinks.length; t++)
+      tocLinks[t].addEventListener('click', onTocLinkClick);
+
+    tocToggle.addEventListener('click', function(e) {
+      toggle(toc);
+      e.preventDefault();
+    });
+
+    toc.addEventListener('click', function(e) {
+      if (e.target !== siteNav)
+        toggle(toc, false);
+    });
+
+    function onTocLinkClick() {
+      _gaq.push(['_trackEvent', 'Interactions', 'TOC', 'TOC Clicked']);
+    }
+
+    function setMinScrollYFromMetaY() {
+      var scrollPosition = window.scrollY;
+
+      var articleMetaBounds = articleMeta.getBoundingClientRect();
+      var articleMetaTop = Math.max(352,
+          articleMetaBounds.top - 20 + scrollPosition);
+
+      articleMetaHeight = articleMetaBounds.bottom - articleMetaBounds.top;
+      articleMetaMinY = articleMetaTop;
+    }
+
+    function setMaxScrollYFromContentHeight() {
+
+      var scrollPosition = window.scrollY;
+
+      var articleContentBounds = articleContent.getBoundingClientRect();
+      var articleContentTop = articleContentBounds.top + scrollPosition;
+      var articleContentHeight = articleContentBounds.bottom - articleContentBounds.top;
+
+      articleMetaMaxY = articleContentTop +
+          articleContentHeight -
+          articleMetaHeight -
+          articleContentPadding;
+
+    }
+
+    function onScroll(e) {
+
+      if (window.scrollY >= articleMetaMinY) {
+
+        articleMeta.classList.add('sticky');
+
+        var articleMetaTop = 22 - Math.max(0, window.scrollY - articleMetaMaxY);
+        articleMeta.style.top = articleMetaTop + 'px';
+
+      } else {
+        articleMeta.classList.remove('sticky');
+        articleMeta.style.top = 'auto';
+      }
+    }
+
+    if (articleMeta.getBoundingClientRect) {
+      setMinScrollYFromMetaY();
+      setMaxScrollYFromContentHeight();
+      document.addEventListener('scroll', onScroll);
+      window.addEventListener('load', setMaxScrollYFromContentHeight, false);
+    }
+
+    
+  })();
+  </script>
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15028909-1']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+
+
+</body></html>

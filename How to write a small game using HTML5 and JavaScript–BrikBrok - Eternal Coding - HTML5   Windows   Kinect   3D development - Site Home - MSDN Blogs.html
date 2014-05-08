@@ -1,0 +1,1690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0116)http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/ms2.js"></script><meta name="robots" content="index,follow">
+<meta name="description" content="Here you will find my feedback around the technologies of Microsoft with a clear preference for everything that concerns the user experience : XAML, HTML5, Kinect or DirectX. Obviously, I will also talk about C#, JavaScript and C++">
+<meta name="keywords" content="C#, Silverlight, WPF, DirectX, XNA, Optimization, Windows, .Net, 3D, UI, UX, Windows Phone, shader, Visual Studio, TPL, Parallel, thread, surface, multitouch, Kinect, javascript, HTML5, CSS3, webgl">
+<meta name="GENERATOR" content="Telligent Evolution Platform Developer Build (Build: 5.6.50428.7875)">
+<link rel="pingback" href="http://blogs.msdn.com/b/eternalcoding/pingback.aspx">
+<link href="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/e8ef9a0f5baf04c5b72689852bedf1f8-3cca145f259b38265dcb26477a5f3c2c-RequestReducedStyle.css" rel="Stylesheet" type="text/css"><link rel="alternate" type="application/rss+xml" title="Site Home (RSS 2.0)" href="http://blogs.msdn.com/rss.aspx">
+<link rel="alternate" type="application/rss+xml" title="David Catuhe&#39;s Comments (RSS 2.0)" href="http://blogs.msdn.com/members/david.catuhe_4000_live.fr/comments/rss.aspx">
+<link rel="alternate" type="application/rss+xml" title="David Catuhe&#39;s Activities (RSS 2.0)" href="http://blogs.msdn.com/members/david.catuhe_4000_live.fr/activities/rss.aspx">
+<link rel="alternate" type="application/rss+xml" title="Activities of People David Catuhe Follows (RSS 2.0)" href="http://blogs.msdn.com/members/david.catuhe_4000_live.fr/activities/followersrss.aspx">
+<link rel="alternate" type="application/rss+xml" title="David Catuhe&#39;s Groups Activities (RSS 2.0)" href="http://blogs.msdn.com/members/david.catuhe_4000_live.fr/activities/groupsrss.aspx">
+<link rel="alternate" type="application/rss+xml" title="Eternal Coding - HTML5 / Windows / Kinect / 3D development (RSS 2.0)" href="http://blogs.msdn.com/b/eternalcoding/rss.aspx">
+<link rel="alternate" type="application/atom+xml" title="Eternal Coding - HTML5 / Windows / Kinect / 3D development (Atom 1.0)" href="http://blogs.msdn.com/b/eternalcoding/atom.aspx">
+<link rel="alternate" type="application/rss+xml" title="Eternal Coding - HTML5 / Windows / Kinect / 3D development - All Comments (RSS 2.0)" href="http://blogs.msdn.com/b/eternalcoding/rsscomments.aspx">
+<link rel="alternate" type="application/rss+xml" title="How to write a small game using HTML5 and JavaScript–BrikBrok - Comments for this post (RSS 2.0)" href="http://blogs.msdn.com/b/eternalcoding/rsscomments.aspx?WeblogPostID=10206555">
+
+                    
+          
+          <link rel="shortcut icon" type="image/ico" href="http://blogs.msdn.com/themes/wireframe/favicon.ico">
+          <!--
+            Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.
+          -->
+          <link href="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/1eae160ea2c1e5cb3196f8c18470cca1-9728b852b1bb5db880b4edfc37d5eac6-RequestReducedStyle.css" rel="Stylesheet" type="text/css"><script type="text/javascript" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/ai.js" async=""></script><script id="twitter-wjs" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/widgets.js"></script><script type="text/javascript" async="" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/ga.js"></script><script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/jquery-1.5.2.min.js" type="text/javascript" language="javascript"></script>
+                  
+          		
+          <link type="text/css" rel="stylesheet" href="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/DynamicStyle.aspx" media="screen,print">
+          <link type="text/css" rel="stylesheet" href="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/DynamicStyle(1).aspx" media="screen,print">
+        
+          <!--[if lte IE 6]>
+              <link type="text/css" rel="stylesheet" href="/themes/wireframe/css/ie6.css" media="screen,print" />
+          <![endif]-->
+                  <meta name="msvalidate.01" content="B717AD6FC29D3A844832AF011B5F9E4C">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3846060-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>document.write('<s'+'cript language="JavaScript" src="http://view.atdmt.com/jaction/frmfrc_FY12MSStackoverflowDeveloppez_1"></s'+'cript>')</script><script language="JavaScript" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/frmfrc_FY12MSStackoverflowDeveloppez_1"></script><noscript>&lt;iframe src="http://view.atdmt.com/iaction/frmfrc_FY12MSStackoverflowDeveloppez_1" width="1" height="1" frameborder="0" scrolling="No" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0"&gt;&lt;/iframe&gt;</noscript>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blogs.msdn.com/b/eternalcoding/rsd.ashx">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href="http://blogs.msdn.com/b/eternalcoding/wlwmanifest.ashx">
+
+        <!--
+            Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.
+          -->
+        <script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/jquery-1.5.2.min.js" type="text/javascript" language="javascript"></script>
+    <title>
+	How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5 / Windows / Kinect / 3D development - Site Home - MSDN Blogs
+</title><script type="text/javascript" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/jquery.tmpl.min.js"></script><link href="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/usercard.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/widgets(1).js"></script><script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/jquery-1.5.2.min(1).js"></script><script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/WebResource.axd"></script><script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/WebResource(1).axd"></script><script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/WebResource(2).axd"></script><script type="text/javascript">try
+{
+// <![CDATA[
+window.ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList = new DelayedContent('ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList','ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList','ctl00_content_ctl00._customCallback(\'fragment-129507\',\'ctl00$content$ctl00$w_129507$_b21f05$ctl00$ctl00$DelayedFeedbackList\',argument,null,callback,null)',true,true,null);
+// ]]>
+} catch(e) { }</script></head>
+	<body spellcheck="true" data-twttr-rendered="true">
+		<form name="aspnetForm" method="post" action="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs.html" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div>
+<input type="hidden" name="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer" id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer" value="9">
+<input type="hidden" name="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_encrypted" id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_encrypted" value="6mwIuteB4Bnx0nNcz8djTiUuo94IkiOqmQSRolFJs5E=">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM5OTAxNDYyNWRkvI787cXLvh9XHlDReEjVejxzcZ4=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/0fab76d4b73b8916a10ea7b23f84b433-5b1aa15902f908538ac67ef6d4c28689-RequestReducedScript.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+			
+            
+                
+            
+            <div class="header-fragments-header"></div>
+<div class="header-fragments"><div class="header-fragment-outer top-bar wireframe-header-fragment-outer wireframe-top-bar"><div class="header-fragment-inner top-bar wireframe-header-fragment-inner wireframe-top-bar"><div class="header-fragment welcome-message" id="header-fragment-247403536">
+
+
+<!-- always render -->
+</div><div class="header-fragment login-logout" id="header-fragment-247403537">
+
+
+
+
+
+        <div class="navigation-list-header"></div>
+        <ul class="navigation-list">
+
+            <li class="navigation-item">
+                <span id="ctl00_header_fragment_247403537__b21f05_ctl00_ctl02_ctl05_WLIDLoginButton1" class="internal-link live-id-button"><a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1399294820&rver=6.0.5286.0&wp=MBI&wreply=http:%2F%2Fblogs.msdn.com%2Fb%2Feternalcoding%2Farchive%2F2011%2F09%2F06%2Fwrite-a-small-game-using-html5-and-javascript-brikbrok.aspx&lc=1033&id=271611">Sign in</a></span>
+            </li>
+        </ul>
+        <div class="navigation-list-footer"></div>
+    </div><div class="header-fragment user-welcome-without-login" id="header-fragment-247403538">
+
+ &nbsp;<!-- always render -->
+
+</div></div></div><div class="header-fragment-outer wireframe-header-fragment-outer site-banner"><div class="header-fragment-inner wireframe-header-fragment-inner site-banner"><div class="header-fragment site-banner" id="header-fragment-247403539">
+
+
+<div class="site-banner-header"></div>
+<div class="site-banner">
+    
+    
+    
+            <div class="site-logo"><a href="http://blogs.msdn.com/">
+                    <img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/logo_msdn.png" alt="" style="border-width:0px;">
+                </a></div>
+        
+</div>
+<div class="site-banner-footer"></div></div></div></div><div class="header-fragment-outer wireframe-header-fragment-outer search"><div class="header-fragment-inner wireframe-header-fragment-inner search"><div class="header-fragment search" id="header-fragment-247403540">
+
+<div class="field-list-header">
+</div>
+<fieldset class="field-list">
+    <ul class="field-list">
+        <li class="field-item"><span class="field-item-input">
+            <input id="SearchTextBox_Header" name="SearchTextBox_Header" type="text" class="search empty" autocomplete="off" title="Search MSDN with Bing" style="color: rgb(170, 170, 170); font-style: italic;">
+            <input id="SearchButton_Header" name="SearchButton_Header" type="image" class="search-button" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/trans.gif" title="Search MSDN with Bing">
+        <span style="background: white url(/Utility/images/MSDNTechnet/common.png) 0 -20px no-repeat;display:block;height:22px;overflow:hidden;width:47px;position:absolute;right:-17px"></span><div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); font-family: Arial; font-size: 11px;"><div id="SuggestionContainer"><ul style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></span></li>
+        <li id="ctl00_header_fragment_247403540__b21f05_ctl00_SearchOptionsButtonWrapper" class="field-item"><span class="field-item-input">
+            <a class="internal-link search-options" title="Change Search Scope">
+                &nbsp;</a> </span></li>
+    </ul>
+</fieldset>
+<div class="field-list-footer">
+</div>
+<script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/SearchBox.jss" type="text/javascript" language="javascript"></script>
+
+<script type="text/javascript" language="javascript">
+    if ($.browser && $.browser.mozilla) {
+        $('#SearchButton_Header').parent().append('<span style="background: white url(/Utility/images/MSDNTechnet/common.png) 0 -20px no-repeat;display:block;height:22px;overflow:hidden;width:47px;position:absolute;right:22px"></span>');
+    } else {
+        $('#SearchButton_Header').parent().append('<span style="background: white url(/Utility/images/MSDNTechnet/common.png) 0 -20px no-repeat;display:block;height:22px;overflow:hidden;width:47px;position:absolute;right:-17px"></span>');
+    }
+</script>
+</div></div></div><div class="header-fragment-outer wireframe-header-fragment-outer group-navigation"><div class="header-fragment-inner wireframe-header-fragment-inner group-navigation"><div class="header-fragment group-navigation" id="header-fragment-247403541">
+
+<script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/44a500773671f30bd4ba3b0c7bba2359-14e0c332a84e56b6d37629b4d8cac65a-RequestReducedScript.js" type="text/javascript"></script>
+    
+<div id="ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ParentGroupListContainer" class="parent-container" style="width: 100%;">
+<div class="parent-sub-container">
+	
+            <div class="navigation-list-header"></div>
+            <ul class="navigation-list parent">
+            <li class="navigation-item" style="display: none;">
+                <a href="http://blogs.msdn.com/">MSDN Blogs</a>
+            </li>
+        
+            <li class="navigation-item entry" style="">
+				
+						<a class="internal-link view-group" href="http://blogs.msdn.com/Microsoft_Blog_Images/"><span></span>Microsoft Blog Images</a>
+					
+            </li>
+        
+			
+            <li class="navigation-item last">
+				<a id="MoreLink" style="display: none;" onmouseover="Core_GroupNavigation_MoreShowNav(ctl00_header_fragment_247403541, true, this)" onmouseout="Core_GroupNavigation_MoreMouseOutPopup(ctl00_header_fragment_247403541, true, this)" href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx#">More ...</a>
+            </li>
+            </ul>
+            <div class="navigation-list-footer"></div>
+        
+</div>
+</div>
+<div id="ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_GroupNavigationPopup" style="position:absolute;visibility:hidden;left:-5000px;"></div>
+<div id="ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ParentMore" style="display: none;">
+    <div class="content-list-header"></div>
+    <ul id="ParentMoreListheader-fragment-247403541" class="content-list"></ul>
+    <div class="content-list-footer"></div>
+</div>
+<div id="ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ChildMore" style="display: none;">
+    <div class="content-list-header"></div>
+    <ul id="ChildMoreListheader-fragment-247403541" class="content-list"></ul>
+    <div class="content-list-footer"></div>
+</div>
+	
+<script type="text/javascript">
+    // <![CDATA[
+    
+    var Core_GroupNavigation_AjaxEndpoint = '/Utility/HeaderFragments/Core/GroupNavigationAjax.asmx';
+        
+    var ctl00_header_fragment_247403541={"wrapperId":"header-fragment-247403541","variableName":"ctl00_header_fragment_247403541","parameter":{"currentGroupId":0,"popupMenuId":"ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_GroupNavigationPopup","popupParentMoreId":"ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ParentMore","popupChildMoreId":"ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ChildMore","popupWrapperID":"popup-ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_GroupNavigationPopup","mouseInPopup":false,"popupPopulated":false,"errorHtml":"<div class=\"message error\">An error occured while attempting to load groups.</div>","loadingHtml":"<div class=\"message loading\">Loading...</div>","groupNavigationContentWrapperHtmlBlock":"<div id=\"popup-ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_GroupNavigationPopup\">{GroupNavigationContent}</div>","groupNavigationListHtmlBlock":"<div class=\"multiple-column-list-header\"></div>\n<div class=\"multiple-column-list columns-{ColumnsCount}\">{Columns}</div>\n<div class=\"multiple-column-list-footer\"></div>","columnWrapperHtmlBlock":"<div class=\"multiple-column-item column-{ColumnId}\">{T1GroupsData}</div>","t1GroupHtmlBlock":"\r\n\t\t<div class=\"content-list-header\"></div>\r\n\t\t<div class=\"content-list-name{NameClass}\">{Name}</div>\r\n\t\t<ul class=\"content-list\">\r\n\t\t\t{Groups}\r\n\t\t</ul>\r\n\t\t<div class=\"content-list-footer\"></div>\r\n\t","t2GroupHtmlBlock":"<li class=\"content-item{ItemClass}\">{Item}</li>","viewAllHtmlBlock":"<a href=\"{Url}\" class=\"internal-link view-all\">{Text}</a>","linkHtmlBlock":"<a href=\"{Url}\" class=\"{MoreClass}\">{Name}</a>","searchResultItemHtmlBlock":"<li class=\"content-item\"><a href=\"{Url}\">{Name}</a></li>","viewMoreText":"and {MoreText} more..."}};
+
+	$(document).ready(function() {
+		Core_GroupNavigation_SetMenuItems("#ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ParentGroupListContainer", true, "ParentMoreListheader-fragment-247403541");
+		Core_GroupNavigation_SetMenuItems("#ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ChildGroupListContainer", false, "ChildMoreListheader-fragment-247403541");
+	});
+
+	$(window).resize(function() {
+		Core_GroupNavigation_SetMenuItems("#ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ParentGroupListContainer", true, "ParentMoreListheader-fragment-247403541");
+		Core_GroupNavigation_SetMenuItems("#ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_ChildGroupListContainer", false, "ChildMoreListheader-fragment-247403541");
+	});
+    // ]]>
+</script></div></div></div></div>
+<div class="header-fragments-footer"></div>
+			
+    <div class="content-fragment-page post" id="ctl00_content_ctl00_page"><div class="layout">
+<div class="layout-header"></div>
+<div class="layout-content content" id="ctl00_content_ctl00_layout">
+<div class="layout-region content" id="ctl00_content_ctl00_content">
+<div class="layout-region-inner content"><div class="content-fragment blog-title full-border" id="fragment-129497">
+<div class="content-fragment-inner wireframe-content-fragment-inner"><div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+<h1 class="title">
+	    
+			        
+			    
+	                How to write a small game using HTML5 and JavaScript–BrikBrok
+			    
+	</h1></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div></div></div>
+<div class="content-fragment blog-bread-crumbs no-wrapper-with-spacing" id="fragment-129519">
+<div class="content-fragment-inner wireframe-content-fragment-inner"><div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+
+<div class="breadcrumb-list-header"></div>
+<div class="breadcrumb-list">
+	<span class="breadcrumb-item"><a class="internal-link view-home" href="http://blogs.msdn.com/">MSDN Blogs</a></span>
+  
+	
+
+	
+			<span class="separator"> &gt; </span>
+			<span class="breadcrumb-item">
+		<a href="http://blogs.msdn.com/b/eternalcoding/">Eternal Coding - HTML5 / Windows / Kinect / 3D development</a>
+			</span>
+		
+	
+	
+			<span class="separator"> &gt; </span>
+			<span class="breadcrumb-item">
+		<a href="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs.html">How to write a small game using HTML5 and JavaScript–BrikBrok</a>
+			</span>
+		
+
+	
+</div>
+<div class="breadcrumb-list-footer"></div>
+</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div></div></div>
+<div class="content-fragment html-content no-wrapper" id="fragment-129498">
+<div class="content-fragment-inner wireframe-content-fragment-inner"><div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+<div class="user-defined-markup"><p><br>&nbsp;</p></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div></div></div>
+<div class="content-fragment blog-post no-wrapper-with-spacing" id="fragment-129504">
+<div class="content-fragment-inner wireframe-content-fragment-inner"><div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+<div class="full-post-header"></div>
+<div class="full-post">
+	<h3 class="post-name">How to write a small game using HTML5 and JavaScript–BrikBrok</h3>
+	
+    <div class="post-author">
+        <span class="avatar"><a href="http://blogs.msdn.com/348549/ProfileUrlRedirect.ashx"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/avatar.jpg" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></a></span>
+        
+        <span class="profile-usercard-hover" data-profile-userid="ee117539da584e059441b9a39702b9a8" data-profile-rendered="true">
+            <span class="user-name"><a class="internal-link view-user-profile" href="http://blogs.msdn.com/348549/ProfileUrlRedirect.ashx"><span></span>David Catuhe</a></span>
+        
+            
+        <div class="profile-usercard">            <div class="profile-header">                <span class="profile-userimage">                                            <img src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAyADIAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAsACMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDJs7A3FmsaSZlLkrHnjHHJ9sd6s2FvIGUlvMwwVfvMGPoMVRspDa3CSPIkXzboiTkKOQcgHgGtO3vAlvcLaakpDkAREqGYZG7Hp7e1cDudiNXTLlkugoAWNMk7l27PXnNWHvYrWMzA7kz/AA81zst5JbQssI/dZZG67l5wM47dR9arb2t9OnmupD51y+5IicbF7Ej8c4+lVCLjsY1IqerN+TxXYxuU3scdwtFUYzdGJPsllNJDtG1xGMHjn9c0VftCfYRKsVtClubkhD5igrlvukDHTvUFxaIXWcDCx4bnH1H6A9Paq+g6lC1oouMsYflOV3ADGMkemP5e9TX1/HPEtvFcrKAAgdU2gewz16Ak+1ZpSUuU6G4tcxQkuZ4T+6mKHaCxXGTnmo3mkltpWmbcwAwccmqOoTbsFPlDsSMenQVO7ERXA7KEAP4122OW51VjqsP2GAPcSowjUEBcgcUVkW41A28RjDBNgC/TFFcEqau9fxOxTdtjnJoLqxuWRg8csZIbacEGrFju/eTuzFgpwT1/D8SK7a40ixvNJlmlgxNAfllViGP155rn9UtIbO7lghB2IqY3HJ5IJrsp1FM5ZU3Ew3Ba9SPrsxn+Zqyr5spWOB5koOPYAn+gqrES1y7nq2SatL/x7NnnaxA/KtSDZttUjW2jV05VQPyoqnGsZjUmJeRnqf8AGiuR04XOhTlY/9k=" alt="Avatar of David Catuhe">                                    </span>                <div>                    <p title="David Catuhe" class="profile-display-name">David Catuhe</p>                                    <p class="profile-company">Microsoft</p>                                    <p class="profile-affiliations">MSFT</p>                </div>            </div>            <div class="profile-points-bar">                <span class="profile-points">21,130<span class="points-label"> Points</span></span>                <span class="profile-count profile-bronze-points"><span class="profile-bronze-img" title="Achievements Earned"></span><span>8</span></span>                <span class="profile-count profile-silver-points"><span class="profile-silver-img" title="Achievements Earned"></span><span>3</span></span>                <span class="profile-count profile-gold-points"><span class="profile-gold-img" title="Achievements Earned"></span><span>3</span></span>                        </div>            <div class="profile-achievements-header">                <span class="profile-achievements-title">Recent Achievements</span>            </div>            <div class="profile-achievements-recent">                <div class="profile-achievements-centering">                                                                <span class="profile-achievement profile-achievement-Gold"><span>Blog Party Starter</span></span>                                            <span class="profile-achievement profile-achievement-Bronze"><span>Forums Replies I</span></span>                                            <span class="profile-achievement profile-achievement-Gold"><span>Blog Commentator III</span></span>                                                            </div>            </div>            <div class="profile-footer">                                <a href="http://social.msdn.microsoft.com/profile/david%20catuhe/?ws=usercard-hover" class="profile-usercard-profileLink" target="_blank">View Profile</a>            </div>        </div></span>
+    </div>
+    <div class="post-date">
+        <span class="value">
+            5 Sep 2011 8:36 PM
+        </span>
+    </div>
+    <div class="post-attributes">
+        <div class="attribute-list-header"></div>
+        <ul class="attribute-list">
+             <li class="attribute-item post-reply-count">
+                <span class="attribute-name">Comments</span>
+                <span class="attribute-value"><a href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx#comments" class="internal-link view-replies"><span></span>10</a></span>
+             </li>
+        </ul>
+        <div class="attribute-list-footer"></div>
+    </div>
+    <div class="post-content user-defined-markup"><p><em><font size="1">This post is a translation of a French article I wrote: </font></em><a title="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/02/cahier-de-vacances-html-5-d-233-velopper-son-propre-jeu-de-casse-briques-en-html-5-avec-canvas-et-svg.aspx" href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/02/cahier-de-vacances-html-5-d-233-velopper-son-propre-jeu-de-casse-briques-en-html-5-avec-canvas-et-svg.aspx"><em><font size="1">http://blogs.msdn.com/b/eternalcoding/archive/2011/09/02/cahier-de-vacances-html-5-d-233-velopper-son-propre-jeu-de-casse-briques-en-html-5-avec-canvas-et-svg.aspx</font></em></a></p> <p>Starter and full solution can <a href="http://www.catuhe.com/msdn/Canvas-SVG.zip">be found here</a>.</p> <h1>Summary<a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/8547.image_5F00_20A621B8.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: right; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" align="right" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/6560.image_5F00_thumb_5F00_0D84F50C.png" width="200" height="154"></a></h1> <ol> <li><a href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx#intro">Introduction</a>  </li><li><a href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx#prerequisites">Prerequisites</a>  </li><li><a href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx#setupback">Setting up the background</a>  </li><li><a href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx#setupgame">Setting up the game</a>  </li><li><a href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx#conclusion">Conclusion</a></li></ol> <h1><a id="intro"></a>Introduction</h1> <p>The goal of this tutorial is discovering graphics development using <strong>SVG</strong> and <strong>Canvas</strong> (which are two majors technologies of HTML5).  </p><p>To do so, we will write together a brick breaker game (à la Arkanoïd or Blockout). It will be composed of an animated background (using Canvas) and will use SVG for bricks, pad and ball.  </p><p>You can try the final version here : <a href="http://www.catuhe.com/ms/en/index.htm">http://www.catuhe.com/ms/en/index.htm</a><br> </p><h1><a id="prerequisites"></a>Prerequisites</h1> <ul> <li>Visual Studio 2010 SP1  </li><li>Web Standards Update : <a href="http://visualstudiogallery.msdn.microsoft.com/a15c3ce9-f58f-42b7-8668-53f6cdc2cd83">http://visualstudiogallery.msdn.microsoft.com/a15c3ce9-f58f-42b7-8668-53f6cdc2cd83</a>  </li><li>Internet Explorer 9<br></li></ul> <h1><a id="setupback"></a>Setting up the background</h1> <p>The background is only an alibi to use a canvas. It will allow us to draw pixels in a given area. So we will use it to draw a space wormhole (yes, I love <strong>Stargate</strong>!). Users will have choice to display it or not using the mode button:  </p><p><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/5415.image_5F00_78FE01AD.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/4338.image_5F00_thumb_5F00_0995FC9C.png" width="640" height="440"></a>  </p><p>You can note that we will add a performance counter in the right top corner (just to see the <strong>power of accelerated graphics</strong> <img style="border-bottom-style: none; border-left-style: none; border-top-style: none; border-right-style: none" class="wlEmoticon wlEmoticon-smile" alt="Sourire" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/8623.wlEmoticon_2D00_smile_5F00_6FC1C66C.png">)<br><br> </p><h2>Setting up HTML5 page</h2> <p>Starting from the <em>index.htm</em> file, we will add our canvas as child of the div “<em>gameZone</em>”:</p> <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:8b944057-e124-421d-a7dd-cf141ca6fd9f" class="wlWriterEditableSmartContent"> <div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt"> <div style="background: #fff; max-height: 500px; overflow: auto"> <ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;"> <li><span style="color:#0000ff">&lt;</span><span style="color:#800000">canvas</span> <span style="color:#ff0000">id</span><span style="color:#0000ff">="backgroundCanvas"&gt;</span></li> <li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;Your browser doesn't support HTML5. Please install Internet Explorer 9 :</li> <li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">&lt;</span><span style="color:#800000">br</span> <span style="color:#0000ff">/&gt;</span></li> <li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">&lt;</span><span style="color:#800000">a</span> <span style="color:#ff0000">href</span><span style="color:#0000ff">="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie9_bow_Bing&amp;WT.srch=1&amp;mtag=SearBing"&gt;</span></li> <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie9_bow_Bing&amp;WT.srch=1&amp;mtag=SearBing<span style="color:#0000ff">&lt;/</span><span style="color:#800000">a</span><span style="color:#0000ff">&gt;</span></li> <li style="background: #f3f3f3"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">canvas</span><span style="color:#0000ff">&gt;</span></li> </ol> </div> </div> </div><br> <h2><br>Adding JavaScript code</h2> <p>The background is handled by <em>background.js</em> file (what a surprise!). So we have to register it inside index.htm. So just before the body closing tag, we will add the following code: </p> <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:207b6d20-6407-4255-8fb7-c42a26cb1c5d" class="wlWriterEditableSmartContent"> <div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt"> <div style="background: #fff; max-height: 500px; overflow: auto"> <ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;"> <li><span style="color:#0000ff">&lt;</span><span style="color:#800000">script</span> <span style="color:#ff0000">type</span><span style="color:#0000ff">="text/javascript"</span> <span style="color:#ff0000">src</span><span style="color:#0000ff">="background.js"&gt;&lt;/</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></li> </ol> </div> </div> </div> <h2><br>Setting up constants</h2> <p> </p><div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:e3a7453b-0342-4d8e-b9a5-d93573d6aea1">First of all, we need constants to drive the rendering:</div> <p> </p><div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px">&nbsp;</div> <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:91de7cc4-c4e6-46c9-982a-2be0f89e2395" class="wlWriterEditableSmartContent"> <div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt"> <div style="background: #fff; max-height: 500px; overflow: auto"> <ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;"> <li><span style="color:#0000ff">var</span> circlesCount = 100; <span style="color:#006400">// Circles count used by the wormhole</span></li> <li style="background: #f3f3f3"><span style="color:#0000ff">var</span> offsetX = 70; <span style="color:#006400">// Wormhole center offset (X)</span></li> <li><span style="color:#0000ff">var</span> offsetY = 40; <span style="color:#006400">// Wormhole center offset (Y)</span></li> <li style="background: #f3f3f3"><span style="color:#0000ff">var</span> maxDepth = 1.5; <span style="color:#006400">// Maximal distance for a circle</span></li> <li><span style="color:#0000ff">var</span> circleDiameter = 10.0; <span style="color:#006400">// Circle diameter</span></li> <li style="background: #f3f3f3"><span style="color:#0000ff">var</span> depthSpeed = 0.001; <span style="color:#006400">// Circle speed</span></li> <li><span style="color:#0000ff">var</span> angleSpeed = 0.05; <span style="color:#006400">// Circle angular rotation speed</span></li> </ol> </div> </div> </div> <p> </p><p>You can of course modify these constants if you want different effects on your wormhole.<br> </p><h2>Getting elements</h2> <p>We also need to keep reference to main elements of the html page:</p> <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:d6482365-1bf8-42d5-adca-ddc74c0576c2" class="wlWriterEditableSmartContent"> <div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt"> <div style="background: #fff; max-height: 500px; overflow: auto"> <ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;"> <li><span style="color:#0000ff">var</span> canvas = document.getElementById(<span style="color:#800000">"backgroundCanvas"</span>);</li> <li style="background: #f3f3f3"><span style="color:#0000ff">var</span> context = canvas.getContext(<span style="color:#800000">"2d"</span>);</li> <li><span style="color:#0000ff">var</span> stats = document.getElementById(<span style="color:#800000">"stats"</span>);</li> </ol> </div> </div> </div> <h2><br>How to display a circle?</h2> <p>The wormhole is only a sequence of circles with different positions and sizes. So to draw it, we will use a circle function which is build around a depth, an angle and an intensity (the base color).</p> <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:ad6fc59a-f497-4275-9d93-26a8c55eac83"> <div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid"> <div style="background: #fff; max-height: 500px; overflow: auto"> <ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px"> <li><span style="color: #0000ff">function</span> Circle(initialDepth, initialAngle, intensity) {  </li><li style="background: #f3f3f3">} </li></ol></div></div></div><pre></pre>
+<p>The angle and the intensity are private but the depth is public to allow the wormhole to change it.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:012ebe78-d859-4ae0-877a-a868e8ad4843">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #0000ff">function</span> Circle(initialDepth, initialAngle, intensity) { 
+</li><li style="background: #f3f3f3">
+</li><li><span style="color: #0000ff">var</span> angle = initialAngle; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">this</span>.depth = initialDepth; 
+</li><li><span style="color: #0000ff">var</span> color = intensity; 
+</li><li style="background: #f3f3f3">} </li></ol></div></div></div><pre></pre>
+<p>We also need a public draw function to draw the circle and update depth, angle. So we need to define where to display the circle. To do so, two variables (x and y) are defined:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:e6d91ee9-85b3-4faa-9d28-a9dff0c9d5d0">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #0000ff">var</span> x = offsetX * Math.cos(angle); 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> y = offsetY * Math.sin(angle); </li></ol></div></div></div><pre></pre>
+<p>As x and y are in space coordinates, we need to project them into the screen:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:0ca3ba8a-9cfb-4dee-9bb2-ef5e858a219c" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#0000ff">function</span> perspective(fov, aspectRatio, x, y) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> yScale = Math.pow(Math.tan(fov / 2.0), -1);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> xScale = yScale / aspectRatio;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> M11 = xScale;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> M22 = yScale;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> outx = x * M11 + canvas.width / 2.0;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> outy = y * M22 + canvas.height / 2.0;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span> { x: outx, y: outy };</li>
+<li style="background: #f3f3f3">}</li>
+</ol>
+</div>
+</div>
+</div><pre></pre>
+<p>So final position of the circle is computed by the following code:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:c3a33e51-e2c1-4e1a-98a4-435c15d0a1cf">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #0000ff">var</span> x = offsetX * Math.cos(angle); 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> y = offsetY * Math.sin(angle); 
+</li><li>
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> project = perspective(0.9, canvas.width / canvas.height, x, y); 
+</li><li><span style="color: #0000ff">var</span> diameter = circleDiameter / <span style="color: #0000ff">this</span>.depth; 
+</li><li style="background: #f3f3f3">
+</li><li><span style="color: #0000ff">var</span> ploX = project.x - diameter / 2.0; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> ploY = project.y - diameter / 2.0; </li></ol></div></div></div><pre></pre>
+<p>And using this position, we can simply draw our circle:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:21ecc93d-5b0b-4f92-9773-66c25055ddcc">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li>context.beginPath(); 
+</li><li style="background: #f3f3f3">context.arc(ploX, ploY, diameter, 0, 2 * Math.PI, <span style="color: #0000ff">false</span>); 
+</li><li>context.closePath(); 
+</li><li style="background: #f3f3f3">
+</li><li><span style="color: #0000ff">var</span> opacity = 1.0 - <span style="color: #0000ff">this</span>.depth / maxDepth; 
+</li><li style="background: #f3f3f3">context.strokeStyle = <span style="color: #800000">"rgba("</span> + color + <span style="color: #800000">","</span> + color + <span style="color: #800000">","</span> + color + <span style="color: #800000">","</span> + opacity + <span style="color: #800000">")"</span>; 
+</li><li>context.lineWidth = 4; 
+</li><li style="background: #f3f3f3">
+</li><li>context.stroke(); </li></ol></div></div></div><pre></pre>
+<p>You can note that the circle is more opaque when it is closer. 
+</p><p>So finally:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:85391355-6a2e-4342-bfd6-91cd2ae49850" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#0000ff">function</span> Circle(initialDepth, initialAngle, intensity) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> angle = initialAngle;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">this</span>.depth = initialDepth;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> color = intensity;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">this</span>.draw = <span style="color:#0000ff">function</span> () {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> x = offsetX * Math.cos(angle);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> y = offsetY * Math.sin(angle);</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> project = perspective(0.9, canvas.width / canvas.height, x, y);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> diameter = circleDiameter / <span style="color:#0000ff">this</span>.depth;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> ploX = project.x - diameter / 2.0;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> ploY = project.y - diameter / 2.0;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context.beginPath();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context.arc(ploX, ploY, diameter, 0, 2 * Math.PI, <span style="color:#0000ff">false</span>);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context.closePath();</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> opacity = 1.0 - <span style="color:#0000ff">this</span>.depth / maxDepth;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context.strokeStyle = <span style="color:#800000">"rgba("</span> + color + <span style="color:#800000">","</span> + color + <span style="color:#800000">","</span> + color + <span style="color:#800000">","</span> + opacity + <span style="color:#800000">")"</span>;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context.lineWidth = 4;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context.stroke();</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">this</span>.depth -= depthSpeed;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;angle += angleSpeed;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (<span style="color:#0000ff">this</span>.depth &lt; 0) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">this</span>.depth = maxDepth + <span style="color:#0000ff">this</span>.depth;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;};</li>
+<li>};</li>
+</ol>
+</div>
+</div>
+</div><br>
+<h2><br>Initialization</h2>
+<p>With our circle function, we can have an array of circles that we will initiate more and more close to us with a slight shift of the angle each time:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:59e6b8f9-9a6f-44a1-8cb3-4bb601a1aed9">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #006400">// Initialization</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> circles = []; 
+</li><li>
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> angle = Math.random() * Math.PI * 2.0; 
+</li><li>
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> depth = maxDepth; 
+</li><li><span style="color: #0000ff">var</span> depthStep = maxDepth / circlesCount; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> angleStep = (Math.PI * 2.0) / circlesCount; 
+</li><li><span style="color: #0000ff">for</span> (<span style="color: #0000ff">var</span> index = 0; index &lt; circlesCount; index++) { 
+</li><li style="background: #f3f3f3">circles[index] = <span style="color: #0000ff">new</span> Circle(depth, angle, index % 5 == 0 ? 200 : 255); 
+</li><li>
+</li><li style="background: #f3f3f3">depth -= depthStep; 
+</li><li>angle -= angleStep; 
+</li><li style="background: #f3f3f3">} </li></ol></div></div></div>
+<h2><br>Computing FPS</h2>
+<p>We can compute FPS by measuring the amount of time between two calls to a given function. In our case, the function will be <em>computeFPS</em>. It will save the last 60 measures and will compute an average to produce the desired result:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:6b11d91b-436a-4ed9-97e0-e3994c39a454">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #006400">// FPS</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> previous = []; 
+</li><li><span style="color: #0000ff">function</span> computeFPS() { 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">if</span> (previous.length &gt; 60) { 
+</li><li>previous.splice(0, 1); 
+</li><li style="background: #f3f3f3">} 
+</li><li><span style="color: #0000ff">var</span> start = (<span style="color: #0000ff">new</span> Date).getTime(); 
+</li><li style="background: #f3f3f3">previous.push(start); 
+</li><li><span style="color: #0000ff">var</span> sum = 0; 
+</li><li style="background: #f3f3f3">
+</li><li><span style="color: #0000ff">for</span> (<span style="color: #0000ff">var</span> id = 0; id &lt; previous.length - 1; id++) { 
+</li><li style="background: #f3f3f3">sum += previous[id + 1] - previous[id]; 
+</li><li>} 
+</li><li style="background: #f3f3f3">
+</li><li><span style="color: #0000ff">var</span> diff = 1000.0 / (sum / previous.length); 
+</li><li style="background: #f3f3f3">
+</li><li>stats.innerHTML = diff.toFixed() + <span style="color: #800000">" fps"</span>; 
+</li><li style="background: #f3f3f3">} </li></ol></div></div></div>
+<h2><br>Drawing and animations</h2>
+<p>The canvas is a <strong>direct mode</strong> tool. This means that we have to reproduce all the content of the canvas every time we need to change something.</p>
+<p>And first of all, we need to clear the content before each frame. The better solution to do that is to use <em>clearRect</em>:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:a5589b59-dd68-4019-91ce-1643f8cd7574" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#006400">// Drawing &amp; Animation</span></li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">function</span> clearCanvas() {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;context.clearRect(0, 0, canvas.width, canvas.height);</li>
+<li style="background: #f3f3f3">}</li>
+</ol>
+</div>
+</div>
+</div><pre></pre>
+<p>So the full wormhole drawing code will look like:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:60a3e728-19b8-496d-a9eb-e5243048f51b" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#0000ff">function</span> wormHole() {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;computeFPS();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;canvas.width = window.innerWidth;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;canvas.height = window.innerHeight - 130 - 40;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;clearCanvas();</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">for</span> (<span style="color:#0000ff">var</span> index = 0; index &lt; circlesCount; index++) {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circles[index].draw();</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;circles.sort(<span style="color:#0000ff">function</span> (a, b) {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (a.depth &gt; b.depth)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span> -1;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (a.depth &lt; b.depth)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span> 1;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span> 0;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;});</li>
+<li>}</li>
+</ol>
+</div>
+</div>
+</div><pre></pre>
+<p>The sort code is used to prevent circles from overlapping.</p>
+<h2>Setting up mode button</h2>
+<p>To finalize our background, we just need to hook up the mode button to display or hide the background: </p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:2e1d93c1-ded2-4e5e-afff-d40dc4154536" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li>&nbsp;</li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">var</span> wormHoleIntervalID = -1;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">function</span> startWormHole() {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (wormHoleIntervalID &gt; -1)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearInterval(wormHoleIntervalID);</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;wormHoleIntervalID = setInterval(wormHole, 16);</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById(<span style="color:#800000">"wormHole"</span>).onclick = stopWormHole;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById(<span style="color:#800000">"wormHole"</span>).innerHTML = <span style="color:#800000">"Standard Mode"</span>;</li>
+<li style="background: #f3f3f3">}</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">function</span> stopWormHole() {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (wormHoleIntervalID &gt; -1)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearInterval(wormHoleIntervalID);</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;clearCanvas();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById(<span style="color:#800000">"wormHole"</span>).onclick = startWormHole;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById(<span style="color:#800000">"wormHole"</span>).innerHTML = <span style="color:#800000">"Wormhole Mode"</span>;</li>
+<li>}</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>stopWormHole();</li>
+</ol>
+</div>
+</div>
+</div>
+<h1><a id="setupgame"></a>Setting up the game</h1>
+<p>In order to simplify a bit the tutorial, the mouse handling code is already done. You can find all you need in the <em>mouse.js</em> file.&nbsp; </p><p><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/0121.image_5F00_68A289F4.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/6560.image_5F00_thumb_5F00_2EB34708.png" width="640" height="440"></a> 
+</p><h2></h2>
+<h2><br>Adding the game JavaScript file</h2>
+<p>The background is handled by <em>game.js</em> file. So we have to register it inside <em>index.htm</em>. So right before the body closing tag, we will add the following code: 
+</p><div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:04782472-7d9a-4002-b72f-a0436cc39cf7">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span> <span style="color: #ff0000">type</span><span style="color: #0000ff">="text/javascript"</span> <span style="color: #ff0000">src</span><span style="color: #0000ff">="game.js"&gt;&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span> </li></ol></div></div></div>
+<h2><br>Updating HTML5 page</h2>
+<p>The game will use <strong>SVG</strong> (Scalable Vector Graphics) to display the bricks, pad and ball. The SVG is a retained mode tool. So you don’t need to redraw all every time you want to move or change an item. 
+</p><p>To add a SVG tag in our page, we just have to insert the following code (just after the canvas):<br>
+</p><div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:9f7f060d-d7e1-46a5-83bf-0a5e168f6584">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #0000ff">&lt;</span><span style="color: #800000">svg</span> <span style="color: #ff0000">id</span><span style="color: #0000ff">="svgRoot"&gt;</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">&lt;</span><span style="color: #800000">circle</span> <span style="color: #ff0000">cx</span><span style="color: #0000ff">="100"</span> <span style="color: #ff0000">cy</span><span style="color: #0000ff">="100"</span> <span style="color: #ff0000">r</span><span style="color: #0000ff">="10"</span> <span style="color: #ff0000">id</span><span style="color: #0000ff">="ball"</span> <span style="color: #0000ff">/&gt;</span> 
+</li><li><span style="color: #0000ff">&lt;</span><span style="color: #800000">rect</span> <span style="color: #ff0000">id</span><span style="color: #0000ff">="pad"</span> <span style="color: #ff0000">height</span><span style="color: #0000ff">="15px"</span> <span style="color: #ff0000">width</span><span style="color: #0000ff">="150px"</span> <span style="color: #ff0000">x</span><span style="color: #0000ff">="200"</span> <span style="color: #ff0000">y</span><span style="color: #0000ff">="200"</span> <span style="color: #ff0000">rx</span><span style="color: #0000ff">="10"</span> <span style="color: #ff0000">ry</span><span style="color: #0000ff">="20"/&gt;</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">&lt;/</span><span style="color: #800000">svg</span><span style="color: #0000ff">&gt;</span> </li></ol></div></div></div><pre></pre>
+<p>As you can note, the SVG starts with two already defined objects : a circle for the ball and a rectangle for the pad. 
+</p><h2><br>Defining constants and variables</h2>
+<p>In game.js file, we will start by adding some variables:</p><pre></pre>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:68a429c4-8f1a-4ac3-b1de-2af2df0b158b">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #006400">// Getting elements</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> pad = document.getElementById(<span style="color: #800000">"pad"</span>); 
+</li><li><span style="color: #0000ff">var</span> ball = document.getElementById(<span style="color: #800000">"ball"</span>); 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> svg = document.getElementById(<span style="color: #800000">"svgRoot"</span>); 
+</li><li><span style="color: #0000ff">var</span> message = document.getElementById(<span style="color: #800000">"message"</span>); </li></ol></div></div></div>
+<p>The ball will be defined by: 
+</p><ul>
+<li>A position 
+</li><li>A radius 
+</li><li>A speed 
+</li><li>A direction 
+</li><li>Its previous position<br></li></ul>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:a6f8559d-b981-4bcd-bf1f-1d6febdedc58">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #006400">// Ball</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> ballRadius = ball.r.baseVal.value; 
+</li><li><span style="color: #0000ff">var</span> ballX; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> ballY; 
+</li><li><span style="color: #0000ff">var</span> previousBallPosition = { x: 0, y: 0 }; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> ballDirectionX; 
+</li><li><span style="color: #0000ff">var</span> ballDirectionY; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> ballSpeed = 10; </li></ol></div></div></div><pre></pre>
+<p>The pad will be defined by:</p>
+<ul>
+<li>Width 
+</li><li>Height 
+</li><li>Position 
+</li><li>Speed 
+</li><li>Inertia value (just to make things smoother <img style="border-bottom-style: none; border-left-style: none; border-top-style: none; border-right-style: none" class="wlEmoticon wlEmoticon-smile" alt="Sourire" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/8623.wlEmoticon_2D00_smile_5F00_6FC1C66C.png">)<br></li></ul>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:aad41503-c202-4357-b66b-fed07785e1b3">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #006400">// Pad</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> padWidth = pad.width.baseVal.value; 
+</li><li><span style="color: #0000ff">var</span> padHeight = pad.height.baseVal.value; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> padX; 
+</li><li><span style="color: #0000ff">var</span> padY; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> padSpeed = 0; 
+</li><li><span style="color: #0000ff">var</span> inertia = 0.80; </li></ol></div></div></div><pre></pre>
+<p>Bricks will be saved in an array and will be defined by:</p>
+<ul>
+<li>Width 
+</li><li>Height 
+</li><li>Margin between them 
+</li><li>Lines count 
+</li><li>Columns count</li></ul>
+<p>We also need an offset and a variable for counting destroyed bricks.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:19c1b02e-a946-426e-a442-942eaecec77d">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #006400">// Bricks</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> bricks = []; 
+</li><li><span style="color: #0000ff">var</span> destroyedBricksCount; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> brickWidth = 50; 
+</li><li><span style="color: #0000ff">var</span> brickHeight = 20; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> bricksRows = 5; 
+</li><li><span style="color: #0000ff">var</span> bricksCols = 20; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> bricksMargin = 15; 
+</li><li><span style="color: #0000ff">var</span> bricksTop = 20; </li></ol></div></div></div><pre></pre>
+<p>And finally we also need the limits of the playground and a start date to compute session duration.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:02ffa719-cad2-46d9-a7c1-0ccaebcc469d">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #006400">// Misc.</span> 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> minX = ballRadius; 
+</li><li><span style="color: #0000ff">var</span> minY = ballRadius; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> maxX; 
+</li><li><span style="color: #0000ff">var</span> maxY; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> startDate; </li></ol></div></div></div>
+<h2><br>Handling a brick</h2>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:63327f88-eeaf-4151-846d-02548b7a1b47">
+<p>To create a brick, we will need a function that will add a new element to the svg root. It will also configure each brick with required information:</p>
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #0000ff">var</span> rect = document.createElementNS(<span style="color: #800000">"http://www.w3.org/2000/svg"</span>, <span style="color: #800000">"rect"</span>); 
+</li><li style="background: #f3f3f3">svg.appendChild(rect); 
+</li><li>
+</li><li style="background: #f3f3f3">rect.setAttribute(<span style="color: #800000">"width"</span>, brickWidth); 
+</li><li>rect.setAttribute(<span style="color: #800000">"height"</span>, brickHeight); 
+</li><li style="background: #f3f3f3">
+</li><li><span style="color: #006400">// Random green color</span>&nbsp; </li><li style="background: #f3f3f3"><span style="color: #0000ff">var</span> chars = <span style="color: #800000">"456789abcdef"</span>; 
+</li><li><span style="color: #0000ff">var</span> color = <span style="color: #800000">""</span>; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">for</span> (<span style="color: #0000ff">var</span> i = 0; i &lt; 2; i++) { 
+</li><li><span style="color: #0000ff">var</span> rnd = Math.floor(chars.length * Math.random()); 
+</li><li style="background: #f3f3f3">color += chars.charAt(rnd); 
+</li><li>} 
+</li><li style="background: #f3f3f3">rect.setAttribute(<span style="color: #800000">"fill"</span>, <span style="color: #800000">"#00"</span> + color + <span style="color: #800000">"00"</span>); </li></ol></div></div></div><pre></pre>
+<p>
+</p><div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:cee407f0-82b9-49af-a79f-f4ef6febd772">The brick function will also provide a <em>drawAndCollide</em> function to display a brick and to check if there is a collision with the ball:</div>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:7a38ed5e-c7fe-4c1d-b96f-9e7444838db1" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#0000ff">this</span>.drawAndCollide = <span style="color:#0000ff">function</span> () {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (isDead)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Drawing</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;rect.setAttribute(<span style="color:#800000">"x"</span>, position.x);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;rect.setAttribute(<span style="color:#800000">"y"</span>, position.y);</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Collision</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (ballX + ballRadius &lt; position.x || ballX - ballRadius &gt; position.x + brickWidth)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (ballY + ballRadius &lt; position.y || ballY - ballRadius &gt; position.y + brickHeight)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Dead</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">this</span>.remove();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;isDead = <span style="color:#0000ff">true</span>;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;destroyedBricksCount++;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Updating ball</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;ballX = previousBallPosition.x;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballY = previousBallPosition.y;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionY *= -1.0;</li>
+<li>};</li>
+</ol>
+</div>
+</div>
+</div>
+<p>Finally the full brick function will look like: </p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:fcb65aeb-7b67-41a1-baed-be7ac333e0bf" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#006400">// Brick function</span></li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">function</span> Brick(x, y) {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> isDead = <span style="color:#0000ff">false</span>;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> position = { x: x, y: y };</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> rect = document.createElementNS(<span style="color:#800000">"http://www.w3.org/2000/svg"</span>, <span style="color:#800000">"rect"</span>);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;svg.appendChild(rect);</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;rect.setAttribute(<span style="color:#800000">"width"</span>, brickWidth);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;rect.setAttribute(<span style="color:#800000">"height"</span>, brickHeight);</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Random green color</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> chars = <span style="color:#800000">"456789abcdef"</span>;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> color = <span style="color:#800000">""</span>;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">for</span> (<span style="color:#0000ff">var</span> i = 0; i &lt; 2; i++) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> rnd = Math.floor(chars.length * Math.random());</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color += chars.charAt(rnd);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;rect.setAttribute(<span style="color:#800000">"fill"</span>, <span style="color:#800000">"#00"</span> + color + <span style="color:#800000">"00"</span>);</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">this</span>.drawAndCollide = <span style="color:#0000ff">function</span> () {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (isDead)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Drawing</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rect.setAttribute(<span style="color:#800000">"x"</span>, position.x);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rect.setAttribute(<span style="color:#800000">"y"</span>, position.y);</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Collision</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (ballX + ballRadius &lt; position.x || ballX - ballRadius &gt; position.x + brickWidth)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (ballY + ballRadius &lt; position.y || ballY - ballRadius &gt; position.y + brickHeight)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Dead</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">this</span>.remove();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isDead = <span style="color:#0000ff">true</span>;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destroyedBricksCount++;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Updating ball</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballX = previousBallPosition.x;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballY = previousBallPosition.y;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionY *= -1.0;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;};</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Killing a brick</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">this</span>.remove = <span style="color:#0000ff">function</span> () {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (isDead)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;svg.removeChild(rect);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;};</li>
+<li>}</li>
+</ol>
+</div>
+</div>
+</div>
+<h2><br>Collisions with the pad and the playground</h2>
+<p>The ball will also have collision functions that will handle collisions with the pad and the playground. These functions will have to update the ball direction when a collision will be detected.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:4694a0a5-0519-4962-b1d9-9a868f20ac70" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#006400">// Collisions</span></li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">function</span> collideWithWindow() {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (ballX &lt; minX) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballX = minX;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionX *= -1.0;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">else</span> <span style="color:#0000ff">if</span> (ballX &gt; maxX) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballX = maxX;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionX *= -1.0;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (ballY &lt; minY) {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballY = minY;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionY *= -1.0;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">else</span> <span style="color:#0000ff">if</span> (ballY &gt; maxY) {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballY = maxY;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionY *= -1.0;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lost();</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>}</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li><span style="color:#0000ff">function</span> collideWithPad() {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (ballX + ballRadius &lt; padX || ballX - ballRadius &gt; padX + padWidth)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (ballY + ballRadius &lt; padY)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">return</span>;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballX = previousBallPosition.x;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;ballY = previousBallPosition.y;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionY *= -1.0;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> dist = ballX - (padX + padWidth / 2);</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionX = 2.0 * dist / padWidth;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> square = Math.sqrt(ballDirectionX * ballDirectionX + ballDirectionY * ballDirectionY);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionX /= square;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionY /= square;</li>
+<li>}</li>
+</ol>
+</div>
+</div>
+</div><pre></pre>
+<p><em>collideWithWindow</em> checks the limits of the playground and <em>collideWithPad</em> checks the limits of the pad (We add a subtle change here: the horizontal speed of the ball will be computed using the distance with the center of the pad).<br>
+</p><h2><br>Moving the pad</h2>
+<p>You can control the pad with the mouse or with the left and right arrows. The <em>movePad</em> function is responsible for handling pad movement. It will also handle the <strong>inertia</strong>: </p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:31edfdac-5b87-4ec4-8a6d-219ad5e2db7f" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#006400">// Pad movement</span></li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">function</span> movePad() {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;padX += padSpeed;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;padSpeed *= inertia;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (padX &lt; minX)</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padX = minX;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (padX + padWidth &gt; maxX)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padX = maxX - padWidth;</li>
+<li style="background: #f3f3f3">}</li>
+</ol>
+</div>
+</div>
+</div>
+<p>The code responsible for handling inputs is pretty <strong>simple</strong>:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:25b7b2bb-7259-49a0-8939-19f195d91cc7" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li>registerMouseMove(document.getElementById(<span style="color:#800000">"gameZone"</span>), <span style="color:#0000ff">function</span> (posx, posy, previousX, previousY) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;padSpeed += (posx - previousX) * 0.2;</li>
+<li>});</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>window.addEventListener(<span style="color:#800000">'keydown'</span>, <span style="color:#0000ff">function</span> (evt) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">switch</span> (evt.keyCode) {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Left arrow</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">case</span> 37:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padSpeed -= 10;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">break</span>;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Right arrow&nbsp;&nbsp;&nbsp;</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">case</span> 39:</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padSpeed += 10;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">break</span>;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background: #f3f3f3">}, <span style="color:#0000ff">true</span>);</li>
+</ol>
+</div>
+</div>
+</div>
+<h2>Game loop</h2>
+<p>Before setting up the game loop we need a function to define the playground size. This function will be called when window is resized.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:6a978274-8027-4aa0-995f-ca5cb7d50e88">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #0000ff">function</span> checkWindow() { 
+</li><li style="background: #f3f3f3">maxX = window.innerWidth - minX; 
+</li><li>maxY = window.innerHeight - 130 - 40 - minY; 
+</li><li style="background: #f3f3f3">padY = maxY - 30; 
+</li><li>} </li></ol></div></div></div><pre></pre>
+<p>By the way, the game loop is the <strong>orchestrator</strong> here:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:9ac0018b-5083-48bb-8e67-a04caaf14330" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#0000ff">function</span> gameLoop() {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;movePad();</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Movements</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;previousBallPosition.x = ballX;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;previousBallPosition.y = ballY;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;ballX += ballDirectionX * ballSpeed;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballY += ballDirectionY * ballSpeed;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Collisions</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;collideWithWindow();</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;collideWithPad();</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Bricks</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">for</span> (<span style="color:#0000ff">var</span> index = 0; index &lt; bricks.length; index++) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bricks[index].drawAndCollide();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Ball</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ball.setAttribute(<span style="color:#800000">"cx"</span>, ballX);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;ball.setAttribute(<span style="color:#800000">"cy"</span>, ballY);</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Pad</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;pad.setAttribute(<span style="color:#800000">"x"</span>, padX);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;pad.setAttribute(<span style="color:#800000">"y"</span>, padY);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Victory ?</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">if</span> (destroyedBricksCount == bricks.length) {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;win();</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>}</li>
+</ol>
+</div>
+</div>
+</div><pre></pre>
+<h2>Initialization and victory</h2>
+<p>The first step of initialization is creating bricks:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:04c38d14-380b-49d0-8c7b-67fd62775f27" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#0000ff">function</span> generateBricks() {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Removing previous ones</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">for</span> (<span style="color:#0000ff">var</span> index = 0; index &lt; bricks.length; index++) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bricks[index].remove();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#006400">// Creating new ones</span></li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> brickID = 0;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> offset = (window.innerWidth - bricksCols * (brickWidth + bricksMargin)) / 2.0;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">for</span> (<span style="color:#0000ff">var</span> x = 0; x &lt; bricksCols; x++) {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">for</span> (<span style="color:#0000ff">var</span> y = 0; y &lt; bricksRows; y++) {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bricks[brickID++] = <span style="color:#0000ff">new</span> Brick(offset + x * (brickWidth + bricksMargin), y * (brickHeight + bricksMargin) + bricksTop);</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li>}</li>
+</ol>
+</div>
+</div>
+</div><pre></pre>
+<p>The next step is about setting variables used by the game:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:39e8ec66-dedb-4f47-8246-2ffbd0031f7b" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#0000ff">function</span> initGame() {</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;message.style.visibility = <span style="color:#800000">"hidden"</span>;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;checkWindow();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;padX = (window.innerWidth - padWidth) / 2.0;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballX = window.innerWidth / 2.0;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;ballY = maxY - 60;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;previousBallPosition.x = ballX;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;previousBallPosition.y = ballY;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;padSpeed = 0;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionX = Math.random();</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;ballDirectionY = -1.0;</li>
+<li style="background: #f3f3f3">&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;generateBricks();</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;gameLoop();</li>
+<li>}</li>
+</ol>
+</div>
+</div>
+</div><pre></pre>
+<p>Every time the user will change the window size, we will have to reset the game:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:c61593d3-998c-491c-a1e5-2835fbb1cdbf">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li>window.onresize = initGame; </li></ol></div></div></div>
+<p>Then we have to attach an event handler to the new game button:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:ccab9bc9-e132-406d-9270-4d172d330b3f">
+<div style="border-bottom: #000080 1px solid; border-left: #000080 1px solid; font-family: &#39;Courier New&#39;, courier, monospace; color: #000; font-size: 10pt; border-top: #000080 1px solid; border-right: #000080 1px solid">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px">
+<li><span style="color: #0000ff">var</span> gameIntervalID = -1; 
+</li><li style="background: #f3f3f3"><span style="color: #0000ff">function</span> startGame() { 
+</li><li>initGame(); 
+</li><li style="background: #f3f3f3">
+</li><li>destroyedBricksCount = 0; 
+</li><li style="background: #f3f3f3">
+</li><li><span style="color: #0000ff">if</span> (gameIntervalID &gt; -1) 
+</li><li style="background: #f3f3f3">clearInterval(gameIntervalID); 
+</li><li>
+</li><li style="background: #f3f3f3">startDate = (<span style="color: #0000ff">new</span> Date()).getTime(); ; 
+</li><li>gameIntervalID = setInterval(gameLoop, 16); 
+</li><li style="background: #f3f3f3">} 
+</li><li>
+</li><li style="background: #f3f3f3">document.getElementById(<span style="color: #800000">"newGame"</span>).onclick = startGame; </li></ol></div></div></div><pre></pre>
+<p>Finally, we will add two functions for handling start and end of the game:</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:662cd033-60ad-4417-ac1a-c3335106d2d2" class="wlWriterEditableSmartContent">
+<div style="border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt">
+<div style="background: #fff; max-height: 500px; overflow: auto">
+<ol style="background: #ffffff; margin: 0; padding: 0 0 0 5px;">
+<li><span style="color:#0000ff">var</span> gameIntervalID = -1;</li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">function</span> lost() {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;clearInterval(gameIntervalID);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;gameIntervalID = -1;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;message.innerHTML = <span style="color:#800000">"Game over !"</span>;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;message.style.visibility = <span style="color:#800000">"visible"</span>;</li>
+<li style="background: #f3f3f3">}</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3"><span style="color:#0000ff">function</span> win() {</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;clearInterval(gameIntervalID);</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;gameIntervalID = -1;</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">var</span> end = (<span style="color:#0000ff">new</span> Date).getTime();</li>
+<li>&nbsp;</li>
+<li style="background: #f3f3f3">&nbsp;&nbsp;&nbsp;&nbsp;message.innerHTML = <span style="color:#800000">"Victory ! ("</span> + Math.round((end - startDate) / 1000) + <span style="color:#800000">"s)"</span>;</li>
+<li>&nbsp;��&nbsp;&nbsp;message.style.visibility = <span style="color:#800000">"visible"</span>; </li>
+<li style="background: #f3f3f3">}</li>
+</ol>
+</div>
+</div>
+</div>
+<h2><br><a id="conclusion"></a>Conclusion</h2>
+<p>You are now a <strong>game developer</strong>! Using the power of accelerated graphics, we have developed a small game but with really interesting special effects! 
+</p><p><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/0525.image_5F00_2727D79B.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/1602.image_5F00_thumb_5F00_3F4B41F6.png" width="640" height="400"></a> 
+</p><p>It’s now up to you to update the game to make it the next <strong>blockbuster</strong>! 
+</p><h1>To go further</h1>
+<ul>
+<li><a title="http://www.beautyoftheweb.com/" href="http://www.beautyoftheweb.com/">http://www.beautyoftheweb.com/</a> 
+</li><li><a title="http://ie.microsoft.com/testdrive/" href="http://ie.microsoft.com/testdrive/">http://ie.microsoft.com/testdrive/</a> 
+</li><li><a title="http://blogs.msdn.com/b/eternalcoding/archive/2011/07/25/feedback-of-a-graphic-development-using-html5-amp-javascript.aspx" href="http://blogs.msdn.com/b/eternalcoding/archive/2011/07/25/feedback-of-a-graphic-development-using-html5-amp-javascript.aspx">http://blogs.msdn.com/b/eternalcoding/archive/2011/07/25/feedback-of-a-graphic-development-using-html5-amp-javascript.aspx</a> 
+</li><li><a title="http://dev.w3.org/html5/spec/Overview.html" href="http://dev.w3.org/html5/spec/Overview.html">http://dev.w3.org/html5/spec/Overview.html</a> 
+</li><li><a title="http://www.w3.org/TR/SVG/" href="http://www.w3.org/TR/SVG/">http://www.w3.org/TR/SVG/</a> 
+</li><li><a title="http://dev.w3.org/html5/spec/the-canvas-element.html" href="http://dev.w3.org/html5/spec/the-canvas-element.html">http://dev.w3.org/html5/spec/the-canvas-element.html</a></li></ul><div style="clear:both;"></div></div>
+    <div class="post-attachment-viewer">
+		
+    </div>
+    <div class="post-actions">
+        <div class="navigation-list-header"></div>
+        <ul class="navigation-list">
+            <!---->
+            <li class="navigation-item"><a class="internal-link view-replies" href="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx#comments"><span></span>10 Comments</a></li>
+            
+            
+        </ul>
+        <div class="navigation-list-footer"></div>
+    </div>
+    <div class="post-tags"><div id="ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_Container" style="display: none;"><div class="tags-editor"><textarea id="ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_Tags" style="width: 97%; height: 100%;" rows="2" cols="30"></textarea><div style="white-space: nowrap; padding-top: 4px;"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tbody><tr><td align="left"><input type="button" onclick="Telligent_Modal.Open(&#39;\/utility\/TagSelector.aspx?TagEditor=ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_TagEditor&#39;,400,300,null);;return false;" value="Select Tags..."></td><td align="right"><input type="button" value="Save"><input type="button" onclick="ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01.Close(); return false;" value="Cancel"></td></tr></tbody></table></div></div></div><span id="ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl02"><a href="http://blogs.msdn.com/b/eternalcoding/archive/tags/Tutorial/" rel="tag">Tutorial</a>, <a href="http://blogs.msdn.com/b/eternalcoding/archive/tags/HTML5/" rel="tag">HTML5</a>, <a href="http://blogs.msdn.com/b/eternalcoding/archive/tags/HTML+5/" rel="tag">HTML 5</a>, <a href="http://blogs.msdn.com/b/eternalcoding/archive/tags/Canvas/" rel="tag">Canvas</a>, <a href="http://blogs.msdn.com/b/eternalcoding/archive/tags/SVG/" rel="tag">SVG</a></span><input type="hidden" name="ctl00$content$ctl00$w_129504$_b21f05$ctl00$ctl15$ctl02" id="ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl02_State" value="value:%3Ca%20href%3D%22http%3A%2F%2Fblogs.msdn.com%2Fb%2Feternalcoding%2Farchive%2Ftags%2FTutorial%2F%22%20rel%3D%22tag%22%3ETutorial%3C%2Fa%3E%2C%20%3Ca%20href%3D%22http%3A%2F%2Fblogs.msdn.com%2Fb%2Feternalcoding%2Farchive%2Ftags%2FHTML5%2F%22%20rel%3D%22tag%22%3EHTML5%3C%2Fa%3E%2C%20%3Ca%20href%3D%22http%3A%2F%2Fblogs.msdn.com%2Fb%2Feternalcoding%2Farchive%2Ftags%2FHTML%2B5%2F%22%20rel%3D%22tag%22%3EHTML%205%3C%2Fa%3E%2C%20%3Ca%20href%3D%22http%3A%2F%2Fblogs.msdn.com%2Fb%2Feternalcoding%2Farchive%2Ftags%2FCanvas%2F%22%20rel%3D%22tag%22%3ECanvas%3C%2Fa%3E%2C%20%3Ca%20href%3D%22http%3A%2F%2Fblogs.msdn.com%2Fb%2Feternalcoding%2Farchive%2Ftags%2FSVG%2F%22%20rel%3D%22tag%22%3ESVG%3C%2Fa%3E"></div>
+</div>
+<div class="full-post-footer"></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div></div></div>
+<div class="content-fragment social-media-sharing no-wrapper-with-spacing" id="fragment-129505">
+<div class="content-fragment-inner wireframe-content-fragment-inner"><div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+<script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/47499858c4077d6e043f7add14000981-e99ec8f3b45f97b38095df2708dc5898-RequestReducedScript.js" type="text/javascript"></script>
+<div class="ShareThisMainPanel">
+	<div id="ctl00_content_ctl00_w_129505__b21f05_ctl00_c3687d92_033f_4859_9a69_608078bb41c4" class="ShareThis_ChildRootPanel" onmouseover="ShareThisChildRootPanelOnmouseOver(this.id);" onmouseout="ShareThisChildRootPanelOnmouseOut(this.id);">
+		<div id="ctl00_content_ctl00_w_129505__b21f05_ctl00_ShareThisBtnCollPanel_132bdbb8a0a74065af54ee2ccab7addc" class="tierOnePanel">
+			<div class="buttonPanel">
+				<a title="Share on Facebook" class="iconsOnPanel" href="http://www.facebook.com/sharer.php?u=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&t=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on Facebook" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/facebook.gif" style="border-width:0px;"></a>
+			</div><div class="buttonPanel">
+				<a title="Share on Twitter" class="iconsOnPanel" href="http://twitter.com/home?status=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok%20:%20http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx" target="_blank"><img title="Share on Twitter" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/twitter.gif" style="border-width:0px;"></a>
+			</div><div class="buttonPanel">
+				<a title="Share on Digg" class="iconsOnPanel" href="http://digg.com/submit?url=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&title=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on Digg" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/digg.gif" style="border-width:0px;"></a>
+			</div><div class="buttonPanel">
+				<a title="Share on del.icio.us" class="iconsOnPanel" href="http://del.icio.us/post?url=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&title=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on del.icio.us" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/delicious.gif" style="border-width:0px;"></a>
+			</div>
+		</div><div id="ctl00_content_ctl00_w_129505__b21f05_ctl00_ShareThisBtnCollPanel_2ca168aabfe345018f8c06d2329cb9a7" class="tierTwoPanel" onclick="TierTwoPanelOnclick(this.id);" onkeypress="if (event.keyCode == 13) TierTwoPanelOnclick(this.id);" onmouseover="TierTwoPanelOnmouseOver(this.id);" onmouseout="TierTwoPanelOnmouseOut(this.id);">
+			<div id="ctl00_content_ctl00_w_129505__b21f05_ctl00_ShareThisBtnCollPanel_bc059fb24abc496b8d7cf962e3fd2bef" class="tierTwoRowPanel">
+				<div class="buttonPanel">
+					<a title="Share on Reddit" class="iconsOnPanel" href="http://www.reddit.com/submit?url=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&title=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on Reddit" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/reddit.gif" style="border-width:0px;"></a>
+				</div><div class="buttonPanel">
+					<a title="Share on LinkedIn" class="iconsOnPanel" href="http://www.linkedin.com/shareArticle?mini=true&ro=true&url=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&title=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok&summary=&source=Microsoft&armin=armin" target="_blank"><img title="Share on LinkedIn" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/linkedin.gif" style="border-width:0px;"></a>
+				</div><div class="buttonPanel">
+					<a title="Share on Slashdot" class="iconsOnPanel" href="http://slashdot.org/bookmark.pl?url=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&title=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on Slashdot" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/slashdot.gif" style="border-width:0px;"></a>
+				</div><div class="buttonPanel">
+					<a title="Share on MySpace" class="iconsOnPanel" href="http://www.myspace.com/Modules/PostTo/Pages/?u=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&t=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on MySpace" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/myspace.gif" style="border-width:0px;"></a>
+				</div>
+			</div><div id="ctl00_content_ctl00_w_129505__b21f05_ctl00_ShareThisBtnCollPanel_5772790a1f4e441e9b70b13ec9e3818b" class="tierTwoRowPanel">
+				<div class="buttonPanel">
+					<a title="Share on Technorati" class="iconsOnPanel" href="http://technorati.com/faves/?add=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx" target="_blank"><img title="Share on Technorati" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/technorati.gif" style="border-width:0px;"></a>
+				</div><div class="buttonPanel">
+					<a title="Share on FriendFeed" class="iconsOnPanel" href="http://friendfeed.com/?url=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&title=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on FriendFeed" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/friendfeed.gif" style="border-width:0px;"></a>
+				</div><div class="buttonPanel">
+					<a title="Share on Messenger" class="iconsOnPanel" href="http://profile.live.com/badge?url=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&title=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on Messenger" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/messenger.png" style="border-width:0px;"></a>
+				</div><div class="buttonPanel">
+					<a title="Share on StumbleUpon" class="iconsOnPanel" href="http://www.stumbleupon.com/submit?url=http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx&title=How+to+write+a+small+game+using+HTML5+and+JavaScript%e2%80%93BrikBrok" target="_blank"><img title="Share on StumbleUpon" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/stumbleupon.gif" style="border-width:0px;"></a>
+				</div>
+			</div>
+		</div>
+	</div><div id="ctl00_content_ctl00_w_129505__b21f05_ctl00_ShowMoreLessButtonsPanel_922ae697_d320_4488_81ff_23672ae0ad11" tabindex="1" class="ShowMoreLessButtonsPanel" onclick="ShowMoreLessButtonsPanelOnClick(this.id);" onkeypress="if (event.keyCode == 13) ShowMoreLessButtonsPanelOnClick(this.id);" onmouseover="ShowMoreLessButtonsPanelOnmouseOver(this.id);" onmouseout="ShowMoreLessButtonsPanelOnmouseOut(this.id);">
+		<a class="buttonMoreLess" id="btn_more"><img title="More" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/more.gif" style="border-width:0px;"></a><a class="buttonMoreLess" id="btn_less"><img title="Less" src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/less.gif" style="border-width:0px;"></a>
+	</div>
+</div><div class="ShareClearFloatsPanel">
+
+</div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div></div></div>
+<div class="content-fragment captcha-blog-post-comment-form no-wrapper-with-spacing" id="fragment-129506">
+<div class="content-fragment-inner wireframe-content-fragment-inner"><div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+<input type="hidden" name="ctl00$content$ctl00$w_129506$_b21f05$ctl00$ctl00$postCommentUrl" id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_postCommentUrl">
+
+    
+            <div class="field-list-header"></div>
+            <fieldset class="field-list">
+                <legend class="field-list-description">Leave a Comment</legend>
+                <ul class="field-list">
+                    <li id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_NameField" class="field-item">
+                        <label for="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName" class="field-item-header">Name</label>
+                        <span class="field-item-input"><input name="ctl00$content$ctl00$w_129506$_b21f05$ctl00$ctl00$PlaceHolder1$ctl04$bpCommentForm$ctl04$tbName" type="text" size="60" id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName"></span>
+                        <span id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV" style="color:Red;display:none;"><span class="field-item-validation">*</span></span>
+                    </li>
+                    <li class="field-item post-body">
+                        <label for="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment" class="field-item-header">Comment</label>
+                        <span class="field-item-input"><textarea rows="2" cols="20" style="height: 100px; resize: none; overflow-y: hidden; position: absolute; top: 0px; left: -9999px; width: 668px; line-height: normal; text-decoration: none; letter-spacing: normal;" tabindex="-1"></textarea><textarea name="ctl00$content$ctl00$w_129506$_b21f05$ctl00$ctl00$PlaceHolder1$ctl04$bpCommentForm$ctl04$tbComment" rows="2" cols="20" id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment" style="height: 100px; resize: none; overflow-y: hidden;"></textarea></span>
+                        <span id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV" style="color:Red;display:none;"><span class="field-item-validation">* Please enter a comment</span></span>
+                        <span id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV" style="color:Red;display:none;"><span class="field-item-validation">Please shorten the content to 3072 or less</span></span>
+                    </li>
+                    <li class="field-item">
+                        
+                           <span id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha" style="color:Red;display:none;">*</span><span id="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_subtext_captcha" style="display: none;">Please add 3 and 4 and type the answer here: <input type="text" name="ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_visibleanswer" value=""></span>
+
+
+                    </li>
+                    <li class="field-item">
+                        <script type="text/javascript">
+                            // <![CDATA[
+
+                            $(document).ready(function () {
+                                $('a.add-reply.post').click(function (e) {
+                                    e.preventDefault();
+                                    postComment(this);
+                                    return false;
+                                });
+
+                                $('#ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').keyup(function (e) {
+                                    $('#errorOnPosting').hide();
+                                });
+                                var nameBox = $('#ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName');
+                                if (nameBox.length > 0) {
+                                    $(nameBox).keyup(function (e) {
+                                        $('#errorOnPosting').hide();
+                                    });
+                                }
+                            });
+
+                            function postComment(anchor) {
+                                if (Page_ClientValidate('BlogPostCommentForm-ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00')) {
+                                    togglePostAndPublishing();
+
+                                    var Core_CreateBlogComment_AjaxEndpoint = '/Utility/ContentFragments/Core/CreateBlogComment.asmx' + "/PostComment";
+                                    var name = '';
+                                    var nameBox = $('#ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName');
+                                    if (nameBox.length > 0) {
+                                        name = $(nameBox).val();
+                                    }
+                                    var body = $('#ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').val();
+                                    var weblogPostId = '10206555';
+
+                                    $.ajax({
+                                        type: "POST",
+                                        async: false,
+                                        url: Core_CreateBlogComment_AjaxEndpoint,
+                                        beforeSend: function (xhr) { TelligentUtility.WriteAuthorizationHeader(xhr); },
+                                        data: { weblogPostId: weblogPostId, url: '', subject: '', message: body, name: name, remember: false },
+                                        success: function (results) {
+                                            var responseVal = $(results.firstChild).text();
+                                            if (responseVal === "-1" || responseVal === "-2") {
+                                                togglePostAndPublishing();
+                                                if (responseVal == "-2")
+                                                    $('#errorOnPosting').html('Your comment has been flagged as spam! The blog administrator has been notified.');
+                                                $('#errorOnPosting').show();
+                                                return;
+                                            }
+                                            var redirectUrl = window.location.href;
+                                            if (redirectUrl.indexOf("?") > -1) {
+                                                redirectUrl = redirectUrl.replace(/\?.*/, "");
+                                            } else if (redirectUrl.indexOf("#") > -1) {
+                                                redirectUrl = redirectUrl.replace(/\#.*/, "");
+                                            }
+
+                                            redirectUrl += '?CommentPosted=true#commentmessage';
+                                            if (window.location.href == redirectUrl) {
+                                                location.reload(true);
+                                            }
+                                            else {
+                                                window.location.href = redirectUrl;
+                                            }
+                                        },
+                                        error: function (xhr, textStatus, errorThrown) {
+                                            togglePostAndPublishing();
+                                            $('#errorOnPosting').show();
+                                        }
+                                    });
+
+                                }
+                            }
+
+                            function togglePostAndPublishing() {
+                                $('a.add-reply.post').toggle();
+                                $('a.publishing').toggle();
+                            }
+                            // ]]>
+                        </script>
+                        <span class="field-item-input">
+                            
+                            <a class="internal-link add-reply post" style="cursor: pointer;"><span></span>Post</a>
+                            <a class="internal-link add-reply publishing" style="color:#c7c7c7; display: none;cursor: pointer;"><span></span>Publishing</a>
+                            <span id="errorOnPosting" style="color: white; background-color: red; padding: 5px; margin-left: 10px; display: none;">An error occurred while posting! Please retry posting your comment.</span>
+                        </span>
+                    </li>
+                </ul>
+            </fieldset>
+            <div class="field-list-footer"></div>
+            
+        
+    </div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div></div></div>
+<div class="content-fragment blog-feedback-list no-wrapper-with-spacing" id="fragment-129507">
+<div class="content-fragment-inner wireframe-content-fragment-inner"><div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+
+
+
+<script type="text/javascript">
+	// <![CDATA[
+	$(document).ready(function() {
+	$(document).bind('telligent_blogs_commentposted', function(e, message) { 
+	            window.setTimeout(new Function(ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList.Reload()), 100); 
+	            return true; 
+	    });
+	    ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList.Reload();
+	});
+// ]]>
+</script>
+
+	
+
+<div id="ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList" style="cursor: default;"><input type="hidden" name="ctl00$content$ctl00$w_129507$_b21f05$ctl00$ctl00$DelayedFeedbackList" value="true:undefined">
+	    
+			    <a name="comments"></a>
+			    <div class="content-list-header"></div>
+			    <div class="content-list-name">
+				    
+						    <a class="internal-link rss" href="http://blogs.msdn.com/b/eternalcoding/rsscomments.aspx?WeblogPostID=10206555"><span></span>Comments</a>
+					    
+			    </div>
+			    <ul class="content-list">
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">Craig</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">6 Sep 2011 9:41 AM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>Great tutorial!</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">Faraaz</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">6 Sep 2011 11:04 AM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>Awesome stuff!</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">micky2be</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">6 Sep 2011 6:30 PM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>Interesting. Never thought using SVG for that.</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">Feng</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">6 Sep 2011 8:55 PM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>good！</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">Mahesh Velaga</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">7 Sep 2011 3:24 AM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>I have been thinking of writing a maze game in HTML5 and javascript for sometime and should serve as a good resource.</p>
+<p>Thanks!</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">Nuthan Santharam</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">13 Sep 2011 10:36 PM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>future is HTML5</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">Freelance Front End Developer</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">3 Oct 2011 5:13 PM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>I've written an article on optimizing canvas games (<a rel="nofollow" target="_new" href="http://nicolahibbert.com/optimising-html5-canvas-games/">nicolahibbert.com/optimising-html5-canvas-games</a>), perhaps your readers will find it helpful.</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">angel samina</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">13 Oct 2013 7:14 AM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>nice</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">Shakti </span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">15 Dec 2013 8:30 PM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>nice work!!!</p>
+<p>really osm!!!</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    
+					    <li class="content-item">
+						    <div class="full-post-outer wireframe-full-post-outer"><div class="full-post-header"><div class="r wireframe-r"></div></div>
+						    <div class="full-post"><div class="full-post-inner wireframe-full-post-inner">
+				    
+			    <div class="post-author">
+				    
+				    <span class="avatar"><img src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/anonymous.gif" alt="" style="border-width:0px;max-height:32px;max-width:32px;"></span>
+                    <span class="profile-usercard-hover" data-profile-userid="00000000000000000000000000000000">
+				        
+				        <span class="user-name">Shubham Sharma</span>
+                    </span>
+			    </div>
+			    <div class="post-date">
+				    <span class="value">21 Jan 2014 7:39 AM</span>
+			    </div>
+			    <div class="post-content user-defined-markup"><p>Hi David,</p>
+<p>Tutorial was fantastic. But, i was disappointed by one thing, the game was not responsive enough.</p>
+<p>I was not able to properly play the game. How to optimize this issue.</p>
+<p>Thanks !!!</p>
+<div style="clear:both;"></div></div>
+			    <div class="post-actions">
+				    
+			    </div>
+			    
+						    </div>
+						    </div><div class="full-post-footer"><div class="r wireframe-r"></div></div></div>
+					    </li>
+				    
+		    
+			    </ul>
+			    <div class="content-list-footer"></div>
+		     
+	    <div class="pager">
+        <span class="summary">Page 1 of 1 (10 items)</span>
+    </div>
+	</div>
+</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div></div></div>
+</div>
+</div>
+</div>
+<div class="layout-footer"></div>
+</div></div>
+
+			<div class="footer-fragments-header"></div>
+<div class="footer-fragments"><div class="footer-fragment copyright-info" id="footer-fragment-247403536">
+
+<ul class="footer-fragment-links">
+    <li class="message copyright">© 2014 Microsoft Corporation.</li>
+	<li class="message termsOfService"><a href="http://msdn.microsoft.com/cc300389">Terms of Use</a> </li>
+    <li class="message trademarks"><a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx">Trademarks</a> </li>
+    <li class="message privacy"><a href="http://go.microsoft.com/fwlink/?LinkId=248681">Privacy &amp; Cookies</a> </li>
+    <li class="message abuse">
+    
+            <a id="ctl00_footer_fragment_247403536__b21f05_ctl00_ctl00_ctl01_lnkAbuse" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$footer_fragment_247403536$_b21f05$ctl00$ctl00$ctl01$lnkAbuse", "", true, "", "", false, true))">Report Abuse</a>
+        
+    </li>
+    
+    <li class="message version">5.6.426.415</li>
+</ul></div><div class="footer-fragment omniture-footer-fragment" id="footer-fragment-247403537">
+
+
+<script src="./How to write a small game using HTML5 and JavaScript–BrikBrok - Eternal Coding - HTML5   Windows   Kinect   3D development - Site Home - MSDN Blogs_files/2569210a296af7a76a1f0a41cafcfd42-0504c0fa449b909ab2cb1f13355532e6-RequestReducedScript.js" type="text/javascript"></script>        <noscript>&lt;a href="http://www.omniture.com" title="Web Analytics"&gt;&lt;img
+        src="http://msstomsdnblogs.112.2O7.net/b/ss/msstomsdnblogs/1/H.20.2--NS/0"
+        height="1" width="1" border="0" alt="" /&gt;&lt;/a&gt;</noscript>
+
+</div><div class="footer-fragment app-insights-footer-fragment" id="footer-fragment-247403538">
+
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function () {
+                window.appInsights = { queue: [], start: function (n) { function r(n, t) { n[t] = function () { var i = arguments; n.queue.push(function () { n[t].apply(n, i) }) } } var t, i; this.applicationInsightsId = n; this.accountId = null; this.appUserId = null; r(this, "logEvent"); r(this, "logPageView"); t = document.createElement("script"); t.type = "text/javascript"; t.src = "//az416426.vo.msecnd.net/scripts/ai.js"; t.async = !0; i = document.getElementsByTagName("script")[0]; i.parentNode.insertBefore(t, i) } };
+                window.appInsights.start("b4d65b72-ce61-486e-b07c-969cef6675f6");
+                window.appInsights.logPageView();
+            });
+        </script>
+    </div></div>
+<div class="footer-fragments-footer"></div>
+		
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV"), document.getElementById("ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV"), document.getElementById("ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV"), document.getElementById("ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV = document.all ? document.all["ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV"] : document.getElementById("ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV");
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.controltovalidate = "ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.display = "Dynamic";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.validationGroup = "BlogPostCommentForm-ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.initialvalue = "";
+var ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV = document.all ? document.all["ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV"] : document.getElementById("ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV");
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.controltovalidate = "ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.display = "Dynamic";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.validationGroup = "BlogPostCommentForm-ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.initialvalue = "";
+var ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV = document.all ? document.all["ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV"] : document.getElementById("ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV");
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.controltovalidate = "ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.display = "Dynamic";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.validationGroup = "BlogPostCommentForm-ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.validationexpression = "^[\\s\\S]{0,3072}$";
+var ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha = document.all ? document.all["ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha"] : document.getElementById("ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha");
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha.errormessage = "*";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha.display = "Dynamic";
+ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha.validationGroup = "BlogPostCommentForm-ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00";
+//]]>
+</script>
+
+<script type="text/javascript">
+// <![CDATA[
+ctl00_content_ctl00 = new ContentFragmentPageCustomCallback('ctl00_content_ctl00',new Function('mode','parameters','callback','errorCallback','context','ctl00_content_ctl00_ctl00._doCallback(mode+\':\'+parameters,callback,context,errorCallback);'));
+// ]]>
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx"
+dc:identifier="http://blogs.msdn.com/b/eternalcoding/archive/2011/09/06/write-a-small-game-using-html5-and-javascript-brikbrok.aspx"
+dc:title="How to write a small game using HTML5 and JavaScript–BrikBrok"
+trackback:ping="http://blogs.msdn.com/b/eternalcoding/trackback.ashx?WeblogPostID=10206555" />
+</rdf:RDF>
+-->
+<script type="text/javascript">
+// <![CDATA[
+Telligent_Modal.Configure('\/utility\/loading.htm',['modal'],['modal-title','modal-title-2','modal-title-3','modal-title-4'],['modal-close'],['modal-content','modal-content-2'],['modal-footer','modal-footer-2','modal-footer-3'],['modal-resize'],['modal-mask'],10000,false,true,true);
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_GroupNavigationPopup = new Telligent_PopupPanel('ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_GroupNavigationPopup','menu group-navigation-content','down',100,null,null,false,'ctl00_header_fragment_247403541__b21f05_ctl00_ctl00_GroupNavigationPopup',new Function('Core_GroupNavigation_MouseOverPopup(ctl00_header_fragment_247403541)'),new Function('Core_GroupNavigation_MouseOutPopup(ctl00_header_fragment_247403541)'));
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_content_ctl00_ctl00 = new Telligent_CallbackManager('ctl00_content_ctl00_ctl00','ctl00$content$ctl00$ctl00','aspnetForm');
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+$('#ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_Container input[value="Save"]').attr('onclick','').removeAttr('onclick').click( function(){ try { var tagText = $('#ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_Tags').val(); if (!tagText) return false;var tagList = tagText.replace(';',',').split(','); var isValid = true; for (var i=0,l=tagList.length;i<l;i++) {isValid = /^[ -~]{0,100}$/ig.test(tagList[i]); if (!isValid) { alert(tagList[i] + ' : is not valide'); return false; } }ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01.Save();}catch(ex){ } return false; });
+// ]]>
+</script>
+<script type="text/javascript">
+// <![CDATA[
+window.ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01 = new Telligent_InlineEditor('ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01','ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_Container',new Function('id', 'p', 'ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_InlineTagEditor.SetInlineEditorPanelAndParameter(id,p);'),new Function('return ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_InlineTagEditor.GetContent();'),new Function('c', 'ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_InlineTagEditor.SetContent(c);'),null,new Function('ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_InlineTagEditor.Focus();'),new Function('w', 'h', 'ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_InlineTagEditor.Resize(w,h);'),300,90);
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+var ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_TagEditor = new TagEditor('ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_TagEditor',[['3D','3D'],['AMP','AMP'],['Animated GIF','Animated GIF'],['Arkanoid','Arkanoid'],['Azure','Azure'],['Babylon','Babylon'],['babylon.js','babylon.js'],['Babylon.Tookit','Babylon.Tookit'],['Benchmark','Benchmark'],['Beta','Beta'],['Book','Book'],['C#','C#'],['C++','C++'],['Canvas','Canvas'],['Coding4Fun','Coding4Fun'],['Compression','Compression'],['Concours','Concours'],['CSS3','CSS3'],['Design','Design'],['Direct2D','Direct2D'],['DirectCompute','DirectCompute'],['DirectX','DirectX'],['Données','Données'],['Ergonomy','Ergonomy'],['Event','Event'],['Games','Games'],['Geek','Geek'],['Geek is in the house','Geek is in the house'],['Gestures','Gestures'],['GUID','GUID'],['Hardware','Hardware'],['HTML 5','HTML 5'],['HTML5','HTML5'],['IE','IE'],['Internet Explorer','Internet Explorer'],['Javascript','Javascript'],['Kinect','Kinect'],['Livre','Livre'],['Mango','Mango'],['Media Foundation','Media Foundation'],['Microsoft','Microsoft'],['MishraReader','MishraReader'],['MVVM','MVVM'],['Optmimizations','Optmimizations'],['PDF','PDF'],['Silverlight','Silverlight'],['Silverlight 5','Silverlight 5'],['Sous le capot','Sous le capot'],['Store','Store'],['SVG','SVG'],['TechDays','TechDays'],['Touch','Touch'],['TPL','TPL'],['Tutorial','Tutorial'],['TypeScript','TypeScript'],['UrzaGatherer','UrzaGatherer'],['User control','User control'],['Video','Video'],['Visual Studio','Visual Studio'],['W3C','W3C'],['WAT','WAT'],['Webcast','Webcast'],['webgl','webgl'],['Windows 8','Windows 8'],['Windows 8.1','Windows 8.1'],['Windows Phone','Windows Phone'],['Windows Store','Windows Store'],['winJS','winJS'],['WinRT','WinRT'],['WMV','WMV'],['WorldMonger','WorldMonger'],['WPF','WPF'],['XAML','XAML'],['XNA','XNA']],'ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_Tags');
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+var ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_InlineTagEditor = new InlineTagEditor('ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_InlineTagEditor','ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01','ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_Container','ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01_Tags');
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl02 = new Telligent_InlineEditorPanel('ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl02','ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl02','ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl02_State','ctl00_content_ctl00_w_129504__b21f05_ctl00_ctl15_ctl01',false,null,null,null);
+// ]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        $('#ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').autoResize({animate : false,extraSpace : 0,limit : 3000});//]]>
+</script>
+<script type="text/javascript">
+subtext_invisible_captcha_hideFromJavascriptEnabledBrowsers('ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_subtext_captcha');
+</script><script type="text/javascript">
+subtext_invisible_captcha_setAnswer(3, 4, 'ctl00_content_ctl00_w_129506__b21f05_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer');
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList = new DelayedContent('ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList','ctl00_content_ctl00_w_129507__b21f05_ctl00_ctl00_DelayedFeedbackList','ctl00_content_ctl00._customCallback(\'fragment-129507\',\'ctl00$content$ctl00$w_129507$_b21f05$ctl00$ctl00$DelayedFeedbackList\',argument,null,callback,null)',true,true,null);
+// ]]>
+</script></form>
+       
+    <script type="text/javascript">
+        $(window).load(function () {
+            $.getScript('http://widgets.membership.s-msft.com/v1/loader.js?brand=msdn&lang=en-US', function () {
+            });
+        });
+    </script>
+    
+	
+
+</body></html>
